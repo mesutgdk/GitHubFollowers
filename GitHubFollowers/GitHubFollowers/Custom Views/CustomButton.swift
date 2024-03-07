@@ -17,7 +17,16 @@ class CustomButton: UIButton{
     }
     
     convenience init(backgroundColor: UIColor, title: String) {
-        self.init(frame: .zero) 
-        self.backgroundColor =
+        self.init(frame: .zero)
+        self.backgroundColor = backgroundColor
+        self.setTitle(title, for: .normal)
+    }
+    
+    func configure(){
+        layer.cornerRadius = 10
+        titleLabel?.font = UIFont.preferredFont(forTextStyle: .headline)
+        setTitleColor(.white, for: .normal)
+        translatesAutoresizingMaskIntoContraints(false)
+        translatesAutoresizingMaskIntoConstraints = false
     }
 }
