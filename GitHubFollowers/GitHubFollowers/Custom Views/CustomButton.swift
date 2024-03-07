@@ -27,6 +27,6 @@ class CustomButton: UIButton{
         titleLabel?.font = UIFont.preferredFont(forTextStyle: .headline)
         setTitleColor(.white, for: .normal)
         translatesAutoresizingMaskIntoContraints(false)
-        translatesAutoresizingMaskIntoConstraints = false
+        addShadow(self, cornerRadius: 10, borderWith: 0.1, borderColor: .black)
     }
 }

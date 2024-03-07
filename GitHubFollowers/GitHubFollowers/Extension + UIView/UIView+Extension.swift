@@ -22,14 +22,14 @@ extension UIView{
         return self
     }
     
-    func addShadow(_ view: UIView){
+    func addShadow(_ view: UIView, cornerRadius: CGFloat, borderWith:CGFloat, borderColor:UIColor){
         view.layer.masksToBounds = true
         
-        view.layer.cornerRadius = 8
+        view.layer.cornerRadius = cornerRadius
         view.clipsToBounds = true
         
-        view.layer.borderWidth = 0.5
-        view.layer.borderColor = UIColor.black.cgColor
+        view.layer.borderWidth = cornerRadius
+        view.layer.borderColor = borderColor.cgColor
         
         view.layer.shadowColor = UIColor.black.cgColor
         view.layer.shadowOffset = CGSize(width: 3, height: 3)
