@@ -14,32 +14,37 @@ final class GFTabViewController: UITabBarController{
     }
     
     private func setUpTabs() {
-        let searchVC = SearchVC()
-        let favoriteVC = FavoriteListVC()
-
-        searchVC.navigationItem.largeTitleDisplayMode = .automatic
-        favoriteVC.navigationItem.largeTitleDisplayMode = .automatic
-
-        let nav1 = UINavigationController(rootViewController: searchVC)
-        let nav2 = UINavigationController(rootViewController: favoriteVC)
-
-        nav1.title = "Search"
         
+        setViewControllers([createSearchNavController(),createFavoriteNavController()], animated: true)
+
+    }
+
+    private func createSearchNavController() -> UINavigationController {
+        let searchVC = SearchVC()
+        searchVC.navigationItem.largeTitleDisplayMode = .automatic
+        searchVC.title = "Search"
+        
+        let nav1 = UINavigationController(rootViewController: searchVC)
+        nav1.navigationBar.prefersLargeTitles = true
+
         nav1.tabBarItem = UITabBarItem(title: "Search",
                                        image: UIImage(systemName: "magnifyingglass"),
-                                       tag: 2)
+                                       tag: 0)
+        return nav1
+    }
+    
+    private func createFavoriteNavController() -> UINavigationController {
+        let favoriteVC = FavoriteListVC()
+        favoriteVC.navigationItem.largeTitleDisplayMode = .automatic
+        favoriteVC.title = "Favorite"
+        
+        let nav2 = UINavigationController(rootViewController: favoriteVC)
+        nav2.navigationBar.prefersLargeTitles = true
         nav2.tabBarItem = UITabBarItem(title: "Favorite",
                                        image: UIImage(systemName: "star.fill"),
-                                       tag: 3)
-       
-        for nav in [ nav1, nav2] {
-            nav.navigationBar.prefersLargeTitles = true
-        }
-
-        setViewControllers(
-            [nav1, nav2],
-            animated: true
-        )
+                                       tag: 1)
+        
+        return nav2
     }
 }
 
