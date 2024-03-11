@@ -14,7 +14,7 @@ final class GFTabViewController: UITabBarController{
     }
     
     private func setUpTabs() {
-        
+        UITabBar.appearance().tintColor = .systemGreen
         setViewControllers([createSearchNavController(),createFavoriteNavController()], animated: true)
 
     }
