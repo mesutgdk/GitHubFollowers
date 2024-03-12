@@ -14,6 +14,7 @@ final class GFTabViewController: UITabBarController{
     }
     
     private func setUpTabs() {
+        tabBar.backgroundColor = .systemBackground
         UITabBar.appearance().tintColor = .systemGreen
         setViewControllers([createSearchNavController(),createFavoriteNavController()], animated: true)
 
@@ -26,6 +27,8 @@ final class GFTabViewController: UITabBarController{
         
         let nav1 = UINavigationController(rootViewController: searchVC)
         nav1.navigationBar.prefersLargeTitles = true
+//        nav1.navigationBar.isTranslucent = false
+//        nav1.navigationBar.backgroundColor = .systemBackground
 
         nav1.tabBarItem = UITabBarItem(title: "Search",
                                        image: UIImage(systemName: "magnifyingglass"),
