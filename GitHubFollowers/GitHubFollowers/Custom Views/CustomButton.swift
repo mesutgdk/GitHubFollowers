@@ -20,11 +20,12 @@ class CustomButton: UIButton{
         self.init(frame: .zero)
         self.backgroundColor = backgroundColor
         self.setTitle(title, for: .normal)
+        configure()
     }
     
     func configure(){
-        layer.cornerRadius = 10
-        titleLabel?.font = UIFont.preferredFont(forTextStyle: .headline)
+        layer.cornerRadius      = 10
+        titleLabel?.font        = UIFont.preferredFont(forTextStyle: .headline)
         setTitleColor(.white, for: .normal)
         translatesAutoresizingMaskIntoContraints(false)
         addShadow(self, cornerRadius: 10, borderWith: 0.1, borderColor: .black)
