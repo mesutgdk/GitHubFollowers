@@ -22,7 +22,7 @@ extension UIView{
         return self
     }
     
-    func addShadow(_ view: UIView, cornerRadius: CGFloat, borderWith:CGFloat, borderColor:UIColor){
+    func addShadowAndCornerRadius(_ view: UIView, cornerRadius: CGFloat, borderWith:CGFloat, borderColor:UIColor){
         view.layer.masksToBounds = true
         
         view.layer.cornerRadius = cornerRadius

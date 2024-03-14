@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CustomButton: UIButton{
+final class CustomButton: UIButton{
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -24,10 +24,11 @@ class CustomButton: UIButton{
     }
     
     func configure(){
-        layer.cornerRadius      = 10
+//        layer.cornerRadius      = 10
         titleLabel?.font        = UIFont.preferredFont(forTextStyle: .headline)
+        
         setTitleColor(.white, for: .normal)
         translatesAutoresizingMaskIntoContraints(false)
-        addShadow(self, cornerRadius: 10, borderWith: 0.1, borderColor: .black)
+        addShadowAndCornerRadius(self, cornerRadius: 10, borderWith: 0.0, borderColor: .black)
     }
 }
