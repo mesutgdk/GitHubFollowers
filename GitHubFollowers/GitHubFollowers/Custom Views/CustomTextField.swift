@@ -20,5 +20,18 @@ final class CustomTextField: UITextField {
     
     private func configure(){
         translatesAutoresizingMaskIntoContraints(true)
+        addShadowAndCornerRadius(self, cornerRadius: 10, borderWith: 2, borderColor: .systemGray4)
+        
+        textColor                   = .label
+        tintColor                   = .label
+        textAlignment               = .center
+        font                        = UIFont.preferredFont(forTextStyle: .title2)
+        adjustsFontSizeToFitWidth   = true
+        minimumFontSize             = 12
+        
+        backgroundColor             = .tertiarySystemBackground
+        autocorrectionType          = .no
+        
+        placeholder                 = "Enter an Username"
     }
 }
