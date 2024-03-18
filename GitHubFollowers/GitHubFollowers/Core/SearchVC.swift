@@ -7,8 +7,24 @@
 
 import UIKit
 
-class SearchVC: UIViewController {
+final class SearchVC: UIViewController {
 
+    private let logoImageView = {
+        let logoImageView = UIImageView()
+        logoImageView.translatesAutoresizingMaskIntoContraints(false)
+        
+        return logoImageView
+    }()
+    
+    private let userNameTextField = {
+        let userNameTextField = CustomTextField()
+        userNameTextField.translatesAutoresizingMaskIntoConstraints = false
+        
+        return userNameTextField
+    }
+    
+    private let callToActionButton = CustomButton(backgroundColor: .black, title: "Get Followers")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
