@@ -28,7 +28,7 @@ extension UIView{
         view.layer.cornerRadius = cornerRadius
         view.clipsToBounds = true
         
-        view.layer.borderWidth = cornerRadius
+        view.layer.borderWidth = borderWith
         view.layer.borderColor = borderColor.cgColor
         
         view.layer.shadowColor = UIColor.black.cgColor

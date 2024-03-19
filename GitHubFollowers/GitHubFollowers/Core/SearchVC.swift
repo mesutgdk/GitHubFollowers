@@ -18,7 +18,7 @@ final class SearchVC: UIViewController {
     
     private let userNameTextField   = CustomTextField()
     
-    private let callToActionButton  = CustomButton(backgroundColor: .black, title: "Get Followers")
+    private let callToActionButton  = CustomButton(backgroundColor: .systemGreen, title: "Get Followers")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,28 +33,34 @@ final class SearchVC: UIViewController {
     }
     
     private func setup(){
-        view.backgroundColor = .systemRed
-        view.addSubviews(logoImageView
-//                         userNameTextField,
-//                         callToActionButton
+        view.backgroundColor = .systemBackground
+        view.addSubviews(logoImageView,
+                         userNameTextField,
+                         callToActionButton
         )
     }
     
     private func layout(){
         //logoImageView
         NSLayoutConstraint.activate([
-            logoImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 80),
+            logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 80),
             logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             logoImageView.heightAnchor.constraint(equalToConstant: 200),
             logoImageView.widthAnchor.constraint(equalTo: logoImageView.heightAnchor)
         ])
         //userTextField
         NSLayoutConstraint.activate([
-            
+            userNameTextField.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 50),
+            userNameTextField.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 50),
+            userNameTextField.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -50),
+            userNameTextField.heightAnchor.constraint(equalToConstant: 50)
         ])
         //actionButton
         NSLayoutConstraint.activate([
-            
+            callToActionButton.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: 50),
+            callToActionButton.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -50),
+            callToActionButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50),
+            callToActionButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
 }
