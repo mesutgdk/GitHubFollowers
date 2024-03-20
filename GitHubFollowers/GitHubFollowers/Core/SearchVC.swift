@@ -25,6 +25,7 @@ final class SearchVC: UIViewController {
 
         setup()
         layout()
+        createDismissKeyboardTapGesture()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -62,5 +63,9 @@ final class SearchVC: UIViewController {
             callToActionButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50),
             callToActionButton.heightAnchor.constraint(equalToConstant: 50)
         ])
+    }
+    private func createDismissKeyboardTapGesture(){
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
+        view.addGestureRecognizer(tap)
     }
 }
