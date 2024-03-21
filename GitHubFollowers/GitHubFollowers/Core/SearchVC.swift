@@ -18,7 +18,7 @@ final class SearchVC: UIViewController {
     
     private let userNameTextField   = CustomTextField()
     
-    private let callToActionButton  = CustomButton(backgroundColor: .systemGreen, title: "Get Followers")
+    private let searchButton  = CustomButton(backgroundColor: .systemGreen, title: "Get Followers")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +26,7 @@ final class SearchVC: UIViewController {
         setup()
         layout()
         createDismissKeyboardTapGesture()
+        addActionToSearchButton()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -37,8 +38,9 @@ final class SearchVC: UIViewController {
         view.backgroundColor = .systemBackground
         view.addSubviews(logoImageView,
                          userNameTextField,
-                         callToActionButton
+                         searchButton
         )
+        userNameTextField.delegate = self        //textfieldDelegate
     }
     
     private func layout(){
@@ -58,14 +60,33 @@ final class SearchVC: UIViewController {
         ])
         //actionButton
         NSLayoutConstraint.activate([
-            callToActionButton.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: 50),
-            callToActionButton.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -50),
-            callToActionButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50),
-            callToActionButton.heightAnchor.constraint(equalToConstant: 50)
+            searchButton.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: 50),
+            searchButton.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -50),
+            searchButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50),
+            searchButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
     private func createDismissKeyboardTapGesture(){
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
         view.addGestureRecognizer(tap)
+    }
+    
+    // MARK: - Actions- searchbutton action creation
+    private func createSearchButtonAction(){
+        let action = UIAction{[weak self] _ in
+            self?.addActionToSearchButton()
+        }
+        searchButton.addAction(action, for: .primaryActionTriggered)
+    }
+    
+    private func addActionToSearchButton(){
+       
+    }
+}
+
+extension SearchVC: UITextFieldDelegate{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        print("Go button pressed")
+        return true
     }
 }
