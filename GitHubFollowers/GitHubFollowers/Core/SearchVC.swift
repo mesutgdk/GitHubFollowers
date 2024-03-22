@@ -26,7 +26,7 @@ final class SearchVC: UIViewController {
         setup()
         layout()
         createDismissKeyboardTapGesture()
-        addActionToSearchButton()
+        createSearchButtonAction()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -80,7 +80,17 @@ final class SearchVC: UIViewController {
     }
     
     private func addActionToSearchButton(){
-       
+       let followerVC = FollowerListVC()
+        
+        guard let userName = userNameTextField.text else {
+            return
+        }
+        followerVC.userName = userName
+        followerVC.title    = userName
+//        print(followerVC.userName)
+        
+        navigationController?.isNavigationBarHidden = false
+        navigationController?.pushViewController(followerVC, animated: true)
     }
 }
 
