@@ -18,10 +18,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         let tabVC = GFTabViewController()
         
+        configureNavigationBar()
         
         window.rootViewController = tabVC
         window.makeKeyAndVisible()
         self.window = window
+    }
+    
+    func configureNavigationBar(){
+        UINavigationBar.appearance().tintColor = .systemGreen
+        UINavigationBar.appearance().prefersLargeTitles = true
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {}

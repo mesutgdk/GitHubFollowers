@@ -18,7 +18,7 @@ class FollowerListVC: UIViewController {
     }
     
     private func setup(){
-        view.backgroundColor = .red
+        view.backgroundColor = .systemBackground
     }
     private func layout(){
         

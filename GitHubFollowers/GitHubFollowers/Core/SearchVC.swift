@@ -8,7 +8,7 @@
 import UIKit
 
 final class SearchVC: UIViewController {
-
+    
     private let logoImageView       = {
         let logoImageView = UIImageView()
         logoImageView.translatesAutoresizingMaskIntoContraints(false)
@@ -20,9 +20,23 @@ final class SearchVC: UIViewController {
     
     private let searchButton  = CustomButton(backgroundColor: .systemGreen, title: "Get Followers")
     
+    private let errorMessageLabel: UILabel = {
+        let errorMessageLabel = UILabel()
+        errorMessageLabel.translatesAutoresizingMaskIntoConstraints = false
+        errorMessageLabel.textAlignment = .center
+        errorMessageLabel.textColor = .systemRed
+        errorMessageLabel.numberOfLines = 0
+        errorMessageLabel.isHidden = true
+        return errorMessageLabel
+    }()
+    
+    var isUserNameEntered : Bool {
+        return !userNameTextField.text!.isEmpty // textfieldin doluluğu kontrolü
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setup()
         layout()
         createDismissKeyboardTapGesture()
@@ -38,6 +52,7 @@ final class SearchVC: UIViewController {
         view.backgroundColor = .systemBackground
         view.addSubviews(logoImageView,
                          userNameTextField,
+                         errorMessageLabel,
                          searchButton
         )
         userNameTextField.delegate = self        //textfieldDelegate
@@ -57,6 +72,12 @@ final class SearchVC: UIViewController {
             userNameTextField.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 50),
             userNameTextField.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -50),
             userNameTextField.heightAnchor.constraint(equalToConstant: 50)
+        ])
+        //errorLAbel
+        NSLayoutConstraint.activate([
+            errorMessageLabel.topAnchor.constraint(equalTo: userNameTextField.bottomAnchor, constant: 10),
+            errorMessageLabel.leftAnchor.constraint(equalTo: userNameTextField.leftAnchor),
+            errorMessageLabel.rightAnchor.constraint(equalTo: userNameTextField.rightAnchor)
         ])
         //actionButton
         NSLayoutConstraint.activate([
@@ -80,16 +101,22 @@ final class SearchVC: UIViewController {
     }
     
     private func addActionToSearchButton(){
-       let followerVC = FollowerListVC()
+        let followerVC = FollowerListVC()
+        errorMessageLabel.isHidden = true
         
-        guard let userName = userNameTextField.text else {
+        guard !userNameTextField.text!.isEmpty else { // textField un-empty guard statement
+            print("TextField is Empty")
+            errorMessageLabel.text = "TextField is Empty"
+            errorMessageLabel.isHidden = false
             return
         }
-        followerVC.userName = userName
-        followerVC.title    = userName
-//        print(followerVC.userName)
+        
+        followerVC.userName = userNameTextField.text!
+        followerVC.title    = userNameTextField.text!
+        //        print(followerVC.userName)
         
         navigationController?.isNavigationBarHidden = false
+        navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.pushViewController(followerVC, animated: true)
     }
 }
