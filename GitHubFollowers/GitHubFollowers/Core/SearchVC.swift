@@ -87,7 +87,7 @@ final class SearchVC: UIViewController {
             searchButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
-    private func createDismissKeyboardTapGesture(){
+    private func createDismissKeyboardTapGesture(){ // taping outside of keyboard disappears the keyboard
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
         view.addGestureRecognizer(tap)
     }
@@ -106,8 +106,11 @@ final class SearchVC: UIViewController {
         
         guard !userNameTextField.text!.isEmpty else { // textField un-empty guard statement
             print("TextField is Empty")
-            errorMessageLabel.text = "TextField is Empty"
+            errorMessageLabel.text = "Username can not be empty"
             errorMessageLabel.isHidden = false
+            DispatchQueue.main.asyncAfter(deadline: .now()+2.5 ){
+                self.errorMessageLabel.isHidden = true
+            }
             return
         }
         
@@ -123,6 +126,7 @@ final class SearchVC: UIViewController {
 
 extension SearchVC: UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.endEditing(true) // to disappear the keyboard after pressing go
         print("Go button pressed")
         return true
     }
