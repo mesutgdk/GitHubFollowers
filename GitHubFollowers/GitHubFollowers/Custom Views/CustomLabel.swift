@@ -26,8 +26,10 @@ final class CustomLabel: UILabel {
     
     private func configure(){
         textColor = .label
+        font = UIFont.preferredFont(forTextStyle: .body)
         adjustsFontSizeToFitWidth = true
         minimumScaleFactor = 0.9
-        lineBreakMode = .byTruncatingTail
+        lineBreakMode = .byWordWrapping
+        translatesAutoresizingMaskIntoContraints(true)
     }
 }
