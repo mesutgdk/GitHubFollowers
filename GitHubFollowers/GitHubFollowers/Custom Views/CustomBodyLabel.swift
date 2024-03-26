@@ -1,14 +1,14 @@
 //
-//  CustomLabel.swift
+//  CustomBodyLabel.swift
 //  GitHubFollowers
 //
-//  Created by Mesut Gedik on 23.03.2024.
+//  Created by Mesut Gedik on 26.03.2024.
 //
 
 import UIKit
 
-final class CustomLabel: UILabel {
-
+final class CustomBodyLabel: UILabel {
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -21,15 +21,14 @@ final class CustomLabel: UILabel {
     init(textAlignment: NSTextAlignment, fontSize: CGFloat) {
         super.init(frame: .zero)
         self.textAlignment = textAlignment
-        self.font = UIFont.systemFont(ofSize: fontSize, weight: .bold)
     }
     
     private func configure(){
-        textColor = .label
-        font = UIFont.preferredFont(forTextStyle: .body)
+        textColor = .secondaryLabel
         adjustsFontSizeToFitWidth = true
-        minimumScaleFactor = 0.9
+        minimumScaleFactor = 0.75
         lineBreakMode = .byWordWrapping
-        translatesAutoresizingMaskIntoContraints(true)
+        translatesAutoresizingMaskIntoContraints(false)
     }
+
 }

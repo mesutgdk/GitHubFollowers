@@ -9,7 +9,11 @@ import UIKit
 
 class CustomAlertVC: UIViewController {
 
-    pr
+    private let containerView = UIView()
+    private let titleLabel = CustomTitleLabel(textAlignment: .center, fontSize: 20)
+    private let messageLabel = CustomTitleLabel(textAlignment: <#T##NSTextAlignment#>, fontSize: <#T##CGFloat#>)
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

@@ -8,12 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		63326A9D2BA323AE00A289DA /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63326A9C2BA323AE00A289DA /* CustomTextField.swift */; };
-		633633A82BAF11B0008BE50D /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633633A72BAF11B0008BE50D /* CustomLabel.swift */; };
+		633633A82BAF11B0008BE50D /* CustomTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633633A72BAF11B0008BE50D /* CustomTitleLabel.swift */; };
 		637CE6DF2B9B36DC00077953 /* GFTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637CE6DE2B9B36DC00077953 /* GFTabViewController.swift */; };
 		637CE6E32B9B377E00077953 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637CE6E22B9B377E00077953 /* SearchVC.swift */; };
 		637CE6E52B9B37A400077953 /* FavoriteListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637CE6E42B9B37A400077953 /* FavoriteListVC.swift */; };
 		63B5E87F2BB1C16500C9A9BC /* CustomAlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B5E87E2BB1C16500C9A9BC /* CustomAlertVC.swift */; };
 		63CA0DC12B99EA2C00A5285A /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CA0DC02B99EA2C00A5285A /* CustomButton.swift */; };
+		63CE3E852BB2F29C00AC91A8 /* CustomBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CE3E842BB2F29C00AC91A8 /* CustomBodyLabel.swift */; };
 		63DBC94F2B9605EB002D97C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DBC94E2B9605EB002D97C4 /* AppDelegate.swift */; };
 		63DBC9512B9605EB002D97C4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DBC9502B9605EB002D97C4 /* SceneDelegate.swift */; };
 		63DBC9582B9605EB002D97C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63DBC9572B9605EB002D97C4 /* Assets.xcassets */; };
@@ -45,12 +46,13 @@
 
 /* Begin PBXFileReference section */
 		63326A9C2BA323AE00A289DA /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
-		633633A72BAF11B0008BE50D /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
+		633633A72BAF11B0008BE50D /* CustomTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTitleLabel.swift; sourceTree = "<group>"; };
 		637CE6DE2B9B36DC00077953 /* GFTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFTabViewController.swift; sourceTree = "<group>"; };
 		637CE6E22B9B377E00077953 /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
 		637CE6E42B9B37A400077953 /* FavoriteListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListVC.swift; sourceTree = "<group>"; };
 		63B5E87E2BB1C16500C9A9BC /* CustomAlertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertVC.swift; sourceTree = "<group>"; };
 		63CA0DC02B99EA2C00A5285A /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		63CE3E842BB2F29C00AC91A8 /* CustomBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBodyLabel.swift; sourceTree = "<group>"; };
 		63DBC94B2B9605EB002D97C4 /* GitHubFollowers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitHubFollowers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63DBC94E2B9605EB002D97C4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63DBC9502B9605EB002D97C4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -108,7 +110,8 @@
 			children = (
 				63CA0DC02B99EA2C00A5285A /* CustomButton.swift */,
 				63326A9C2BA323AE00A289DA /* CustomTextField.swift */,
-				633633A72BAF11B0008BE50D /* CustomLabel.swift */,
+				633633A72BAF11B0008BE50D /* CustomTitleLabel.swift */,
+				63CE3E842BB2F29C00AC91A8 /* CustomBodyLabel.swift */,
 				63B5E87E2BB1C16500C9A9BC /* CustomAlertVC.swift */,
 			);
 			path = "Custom Views";
@@ -315,9 +318,10 @@
 			files = (
 				63DBC94F2B9605EB002D97C4 /* AppDelegate.swift in Sources */,
 				63CA0DC12B99EA2C00A5285A /* CustomButton.swift in Sources */,
-				633633A82BAF11B0008BE50D /* CustomLabel.swift in Sources */,
+				633633A82BAF11B0008BE50D /* CustomTitleLabel.swift in Sources */,
 				63FA7FD12BAC81260055D781 /* FollowerListVC.swift in Sources */,
 				637CE6DF2B9B36DC00077953 /* GFTabViewController.swift in Sources */,
+				63CE3E852BB2F29C00AC91A8 /* CustomBodyLabel.swift in Sources */,
 				637CE6E52B9B37A400077953 /* FavoriteListVC.swift in Sources */,
 				63B5E87F2BB1C16500C9A9BC /* CustomAlertVC.swift in Sources */,
 				63F0867D2B975FF40083780D /* UIView+Extension.swift in Sources */,
