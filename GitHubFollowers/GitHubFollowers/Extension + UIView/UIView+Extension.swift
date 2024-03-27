@@ -22,7 +22,8 @@ extension UIView{
         return self
     }
     
-    func addShadowAndCornerRadius(_ view: UIView, cornerRadius: CGFloat, borderWith:CGFloat, borderColor:UIColor){
+    func addCornerRadiusAndShadow(_ view: UIView, cornerRadius: CGFloat, borderWith:CGFloat, borderColor:UIColor, hasShadow:Bool){
+        view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.masksToBounds = true
         
         view.layer.cornerRadius = cornerRadius
@@ -31,10 +32,12 @@ extension UIView{
         view.layer.borderWidth = borderWith
         view.layer.borderColor = borderColor.cgColor
         
-        view.layer.shadowColor = UIColor.black.cgColor
-        view.layer.shadowOffset = CGSize(width: 3, height: 3)
-        view.layer.shadowOpacity = 0.1
-        view.layer.shadowRadius = 4
+        if hasShadow {
+            view.layer.shadowColor = UIColor.black.cgColor
+            view.layer.shadowOffset = CGSize(width: 3, height: 3)
+            view.layer.shadowOpacity = 0.1
+            view.layer.shadowRadius = 4
+        }
     }
 }
 
