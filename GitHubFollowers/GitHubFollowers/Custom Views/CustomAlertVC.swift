@@ -46,6 +46,8 @@ class CustomAlertVC: UIViewController {
 
         setup()
         layout()
+        
+        configureAlert()
     }
     
     private func setup(){
@@ -55,17 +57,27 @@ class CustomAlertVC: UIViewController {
         containerView.addSubview(actionButton)
         
         view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.75)
- 
+        
     }
     
     private func layout(){
         //containerView
-        NSLayoutConstraint.activate([
-            containerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            containerView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            containerView.widthAnchor.constraint(equalToConstant: 280),
-            containerView.heightAnchor.constraint(equalToConstant: 220)
-        ])
+        if UIDevice.isIphone {
+            NSLayoutConstraint.activate([
+                containerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                containerView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+                containerView.widthAnchor.constraint(equalToConstant: 280),
+                containerView.heightAnchor.constraint(equalToConstant: 220)
+            ])
+        } else {
+            NSLayoutConstraint.activate([
+                containerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                containerView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+                containerView.widthAnchor.constraint(equalToConstant: 320),
+                containerView.heightAnchor.constraint(equalToConstant: 250)
+            ])
+        }
+        
         // titleLabel
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: padding),

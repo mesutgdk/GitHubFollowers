@@ -20,7 +20,7 @@ final class CustomTextField: UITextField {
     
     private func configure(){
         translatesAutoresizingMaskIntoContraints(false)
-        addShadowAndCornerRadius(self, cornerRadius: 10, borderWith: 1, borderColor: .systemGray4)
+        addCornerRadiusAndShadow(self, cornerRadius: 10, borderWith: 1, borderColor: .systemGray4, hasShadow: true)
         
         textColor                   = .label
         tintColor                   = .label

@@ -106,12 +106,9 @@ final class SearchVC: UIViewController {
         errorMessageLabel.isHidden = true
         
         guard !userNameTextField.text!.isEmpty else { // textField un-empty guard statement
-            print("TextField is Empty")
-            errorMessageLabel.text = "Username can not be empty"
-            errorMessageLabel.isHidden = false
-            DispatchQueue.main.asyncAfter(deadline: .now()+2.5 ){
-                self.errorMessageLabel.isHidden = true
-            }
+//            print("TextField is Empty")
+            presentCustomAlertOnMainThread(title: "Empty Username", message: "Please enter a username. We need to know who to look for 😁", buttonTitle: "Ok")
+            showErrorMessage()
             return
         }
         
@@ -122,6 +119,15 @@ final class SearchVC: UIViewController {
         navigationController?.isNavigationBarHidden = false
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.pushViewController(followerVC, animated: true)
+    }
+    
+    //ErrorMessage below textfield
+    private func showErrorMessage(){
+        errorMessageLabel.text = "No Username"
+        errorMessageLabel.isHidden = false
+        DispatchQueue.main.asyncAfter(deadline: .now()+2.5 ){
+            self.errorMessageLabel.isHidden = true
+        }
     }
 }
 

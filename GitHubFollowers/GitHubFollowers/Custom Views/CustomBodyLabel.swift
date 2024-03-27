@@ -11,6 +11,7 @@ final class CustomBodyLabel: UILabel {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        configure()
     }
     
     
@@ -22,6 +23,7 @@ final class CustomBodyLabel: UILabel {
         super.init(frame: .zero)
         self.textAlignment = textAlignment
         self.numberOfLines = numberOfLines
+        configure()
     }
     
     private func configure(){
