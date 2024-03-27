@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6327F8DC2BB401BB00A32E7D /* UIViewCont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6327F8DB2BB401BB00A32E7D /* UIViewCont+Extension.swift */; };
 		63326A9D2BA323AE00A289DA /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63326A9C2BA323AE00A289DA /* CustomTextField.swift */; };
 		633633A82BAF11B0008BE50D /* CustomTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633633A72BAF11B0008BE50D /* CustomTitleLabel.swift */; };
 		637CE6DF2B9B36DC00077953 /* GFTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637CE6DE2B9B36DC00077953 /* GFTabViewController.swift */; };
@@ -45,6 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6327F8DB2BB401BB00A32E7D /* UIViewCont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewCont+Extension.swift"; sourceTree = "<group>"; };
 		63326A9C2BA323AE00A289DA /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		633633A72BAF11B0008BE50D /* CustomTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTitleLabel.swift; sourceTree = "<group>"; };
 		637CE6DE2B9B36DC00077953 /* GFTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFTabViewController.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 			children = (
 				63F0867C2B975FF40083780D /* UIView+Extension.swift */,
 				63EB9F0D2B985BCD00A8D8B7 /* String+Extension.swift */,
+				6327F8DB2BB401BB00A32E7D /* UIViewCont+Extension.swift */,
 			);
 			path = "Extension + UIView";
 			sourceTree = "<group>";
@@ -316,6 +319,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6327F8DC2BB401BB00A32E7D /* UIViewCont+Extension.swift in Sources */,
 				63DBC94F2B9605EB002D97C4 /* AppDelegate.swift in Sources */,
 				63CA0DC12B99EA2C00A5285A /* CustomButton.swift in Sources */,
 				633633A82BAF11B0008BE50D /* CustomTitleLabel.swift in Sources */,

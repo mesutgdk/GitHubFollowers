@@ -21,7 +21,7 @@ class CustomAlertVC: UIViewController {
     } ()
  
     private let titleLabel      = CustomTitleLabel(textAlignment: .center, fontSize: 20)
-    private let messageLabel    = CustomBodyLabel(textAlignment: .center)
+    private let messageLabel    = CustomBodyLabel(textAlignment: .center, numberOfLines: 4)
     private let actionButton    = CustomButton(backgroundColor: .systemPink, title: "Ok")
     
     var alertTitle : String?
@@ -49,9 +49,10 @@ class CustomAlertVC: UIViewController {
     }
     
     private func setup(){
-        containerView.addSubview(titleLabel)
-        containerView.addSubview(actionButton)
         view.addSubview(containerView)
+        containerView.addSubview(titleLabel)
+        containerView.addSubview(messageLabel)
+        containerView.addSubview(actionButton)
         
         view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.75)
  
@@ -73,12 +74,38 @@ class CustomAlertVC: UIViewController {
             titleLabel.heightAnchor.constraint(equalToConstant: 28)
         ])
         
+        //messageLabel
+        NSLayoutConstraint.activate([
+            messageLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor,constant: 8),
+            messageLabel.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: padding),
+            messageLabel.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: -padding),
+            messageLabel.bottomAnchor.constraint(equalTo: actionButton.topAnchor, constant: -12)
+        ])
+        
+        // actionButton
+        NSLayoutConstraint.activate([
+            actionButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -padding),
+            actionButton.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: padding),
+            actionButton.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: -padding),
+            actionButton.heightAnchor.constraint(equalToConstant: 44)
+        ])
         
     }
     
     private func configureAlert(){
         titleLabel.text = alertTitle ?? "Something went wrong"
+        messageLabel.text = message ?? "Unable to complete request"
+        actionButton.setTitle(buttonTitle ?? "Ok", for: .normal)
         
+        // createActionToDismissAlert
+        let action = UIAction{[weak self] _ in
+            self?.dismissAlert()
+        }
+        actionButton.addAction(action, for: .primaryActionTriggered)
+    }
+    
+    private func dismissAlert(){
+        dismiss(animated: true)
     }
     
 

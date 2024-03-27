@@ -39,6 +39,7 @@ final class SearchVC: UIViewController {
         
         setup()
         layout()
+        
         createDismissKeyboardTapGesture()
         createSearchButtonAction()
     }
