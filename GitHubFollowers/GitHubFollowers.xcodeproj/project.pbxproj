@@ -119,6 +119,13 @@
 			path = "Custom Views";
 			sourceTree = "<group>";
 		};
+		63D6B6472BB6D7890091841F /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
 		63DBC9422B9605EA002D97C4 = {
 			isa = PBXGroup;
 			children = (
@@ -144,8 +151,9 @@
 			children = (
 				637CE6DD2B9B369B00077953 /* Resource */,
 				63CA0DBD2B99E9BA00A5285A /* Custom Views */,
-				63F0867B2B975FB70083780D /* Extension + UIView */,
+				63F0867B2B975FB70083780D /* Extension */,
 				63F0867A2B975F760083780D /* Core */,
+				63D6B6472BB6D7890091841F /* Screens */,
 				63DBC95C2B9605EB002D97C4 /* Info.plist */,
 			);
 			path = GitHubFollowers;
@@ -179,14 +187,14 @@
 			path = Core;
 			sourceTree = "<group>";
 		};
-		63F0867B2B975FB70083780D /* Extension + UIView */ = {
+		63F0867B2B975FB70083780D /* Extension */ = {
 			isa = PBXGroup;
 			children = (
 				63F0867C2B975FF40083780D /* UIView+Extension.swift */,
 				63EB9F0D2B985BCD00A8D8B7 /* String+Extension.swift */,
 				6327F8DB2BB401BB00A32E7D /* UIViewCont+Extension.swift */,
 			);
-			path = "Extension + UIView";
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
