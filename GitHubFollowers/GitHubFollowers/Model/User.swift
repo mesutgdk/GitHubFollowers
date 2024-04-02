@@ -11,7 +11,7 @@ struct User: Codable{
     var login       : String
     var avatarUrl   : String
     var name        : String?
-    var location    : String
+    var location    : String?
     var bio         : String?
     var publicRepo  : Int
     var publicGist  : Int

@@ -17,12 +17,16 @@ class FollowerListVC: UIViewController {
         layout()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
     private func setup(){
         view.backgroundColor = .systemBackground
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
     private func layout(){
         
     }
-    
 
 }
