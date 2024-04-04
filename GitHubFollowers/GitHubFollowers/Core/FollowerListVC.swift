@@ -26,14 +26,25 @@ class FollowerListVC: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
     }
     private func layout(){
-        NetworkManager.shared.getFollowers(for: userName, page: 1) { (followers, errorMessage) in
-            guard let followers = followers else {
-                self.presentCustomAlertOnMainThread(title: "Bad News⛈️", message: errorMessage!.errorDescription, buttonTitle: "Ok")
-                return
+        
+        NetworkManager.shared.getFollowers(for: userName, page: 1) { [weak self] (result) in
+            switch result {
+            case .success(let followers):
+                print("Followers.count = \(followers.count)")
+                print(followers)
+            case .failure(let error):
+                self?.presentCustomAlertOnMainThread(title: "Bad News⛈️", message: error.errorDescription, buttonTitle: "Ok")
             }
-            print("Followers.count = \(followers.count)")
-            print(followers)
         }
+        
+//        NetworkManager.shared.getFollowersByOldWayWithoutResultType(for: userName, page: 1) { [weak self] (followers, errorMessage) in
+//            guard let followers = followers else {
+//                self?.presentCustomAlertOnMainThread(title: "Bad News⛈️", message: errorMessage!.errorDescription, buttonTitle: "Ok")
+//                return
+//            }
+//            print("Followers.count = \(followers.count)")
+//            print(followers)
+//        }
     }
 
 }

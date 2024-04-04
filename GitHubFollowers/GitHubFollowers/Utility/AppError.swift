@@ -1,5 +1,5 @@
 //
-//  ErrorMessage.swift
+//  AppError.swift
 //  GitHubFollowers
 //
 //  Created by Mesut Gedik on 4.04.2024.
@@ -7,8 +7,7 @@
 
 import Foundation
 
-// used old type of errorHandling during network call
-enum ErrorMessage: String {
+enum AppError: LocalizedError {
     case invalidUsername
     case cantHandleRequest
     case invalidResponce

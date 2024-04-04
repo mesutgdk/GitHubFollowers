@@ -15,7 +15,47 @@ final class NetworkManager{
     
     private init() {}
     
-    func getFollowers(for username: String, page: Int, comletion: @escaping ([Follower]?, ErrorMessage?)-> Void){
+    
+    func getFollowers(for username: String, page: Int, comletion: @escaping (Result<[Follower],AppError>)-> Void){
+        let endpoint = baseURL + "\(username)/followers?per_page=100&page=\(page)"
+        
+        guard let url = endpoint.asUrl else {
+            comletion(.failure(.invalidUsername))
+            return
+        }
+        
+        let task = URLSession.shared.dataTask(with: url) { data, responce, error in
+            if let _ = error {
+                comletion(.failure(.cantHandleRequest))
+            }
+            
+            guard let responce = responce as? HTTPURLResponse, responce.statusCode == 200 else {
+                comletion(.failure(.invalidResponce))
+                return
+            }
+            
+            guard let data = data else {
+                comletion(.failure(.invalidData))
+                return
+            }
+            do{
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                
+                let followers = try decoder.decode([Follower].self, from: data)
+                
+                comletion(.success(followers)) // işlem başarılı, decode ettiğimizi yukarı atıyoruz
+            } catch{
+                comletion(.failure(.decodingError))
+            }
+        
+        }
+        task.resume()
+    }
+    
+    // MARK: - Old networkingway without result type
+    // before swift 5, the old way with network, maybe it helps refactoring at some companies
+    func getFollowersByOldWayWithoutResultType(for username: String, page: Int, comletion: @escaping ([Follower]?, ErrorMessage?)-> Void){
         let endpoint = baseURL + "\(username)/followers?per_page=100&page=\(page)"
         
         guard let url = endpoint.asUrl else {
@@ -49,7 +89,6 @@ final class NetworkManager{
             }
         
         }
-        
         task.resume()
     }
 }
