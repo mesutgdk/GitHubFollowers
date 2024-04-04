@@ -28,7 +28,7 @@ class FollowerListVC: UIViewController {
     private func layout(){
         NetworkManager.shared.getFollowers(for: userName, page: 1) { (followers, errorMessage) in
             guard let followers = followers else {
-                self.presentCustomAlertOnMainThread(title: "Something bad happenned", message: errorMessage!.errorDescription, buttonTitle: "Ok")
+                self.presentCustomAlertOnMainThread(title: "Bad News⛈️", message: errorMessage!.errorDescription, buttonTitle: "Ok")
                 return
             }
             print("Followers.count = \(followers.count)")

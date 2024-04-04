@@ -17,15 +17,15 @@ enum ErrorMessage: String {
     var errorDescription: String {
         switch self {
         case .invalidUsername:
-            return "This username created an invalid request. Please try again"
+            return "This username created an invalid request. Please try again ❌"
         case .cantHandleRequest:
-            return "Unable to complete your request. Please check your internet connection."
+            return "Unable to complete your request. Please check your internet connection. ❌"
         case .invalidResponce:
-            return "Invalid responce from the server. Please try again."
+            return "Invalid responce from the server. Please try again. ❌"
         case .invalidData:
-            return "The data received from the server was invalid, Please try again."
+            return "The data received from the server was invalid, Please try again. ❌"
         case .decodingError:
-            return "The data can not be decoded, Please try again"
+            return "The data can not be decoded, Please try again. ❌"
         }
     }
 }
