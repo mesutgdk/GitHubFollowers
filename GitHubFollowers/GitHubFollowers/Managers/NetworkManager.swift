@@ -48,7 +48,6 @@ final class NetworkManager{
             } catch{
                 comletion(.failure(.decodingError))
             }
-        
         }
         task.resume()
     }
@@ -87,7 +86,7 @@ final class NetworkManager{
             } catch{
                 comletion(nil, .decodingError)
             }
-        
+            
         }
         task.resume()
     }
