@@ -19,10 +19,10 @@ final class CustomImageView: UIImageView {
     }
     
     private func configure(){
-        translatesAutoresizingMaskIntoConstraints = false
-        layer.cornerRadius = 10
-        clipsToBounds = true
-        image = UIImage(named: "avatar-placeholder")
+        translatesAutoresizingMaskIntoConstraints    = false
+        layer.cornerRadius                           = 10
+        clipsToBounds                                = true
+        image                                        = UIImage(named: "avatar-placeholder")
     }
     
 }

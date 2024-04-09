@@ -23,11 +23,32 @@ final class FollowerCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setup(){
+    func configure(follower: Follower){
+        usernameLabel.text = follower.login
         
     }
     
+    private func setup(){
+        addSubviews(avatarImageView, usernameLabel)
+    }
+    
     private func layout(){
+        let padding: CGFloat = 8
         
+        // avatarImageView
+        NSLayoutConstraint.activate([
+            avatarImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: padding),
+            avatarImageView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: padding),
+            avatarImageView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -padding),
+            avatarImageView.heightAnchor.constraint(equalTo: avatarImageView.widthAnchor)
+        ])
+        
+        // userNameLabel
+        NSLayoutConstraint.activate([
+            usernameLabel.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: 12),
+            usernameLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: padding),
+            usernameLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -padding),
+            usernameLabel.heightAnchor.constraint(equalToConstant: 20)
+        ])
     }
 }
