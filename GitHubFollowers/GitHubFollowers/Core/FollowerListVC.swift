@@ -7,9 +7,22 @@
 
 import UIKit
 
-class FollowerListVC: UIViewController {
+final class FollowerListVC: UIViewController {
 
     var userName : String = ""
+    
+    let collectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        layout.sectionInset = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
+        
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        
+        collectionView.register(FollowerCell.self,
+                                forCellWithReuseIdentifier: FollowerCell.cellIdentifier)
+        return collectionView
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
