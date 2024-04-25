@@ -23,7 +23,7 @@ final class FollowerListVC: UIViewController {
         collectionView.register(FollowerCell.self,
                                 forCellWithReuseIdentifier: FollowerCell.cellIdentifier)
         return collectionView
-    }
+    } ()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,17 +33,24 @@ final class FollowerListVC: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     private func setup(){
+        view.addSubview(collectionView)
+        
         view.backgroundColor = .systemBackground
         navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     private func layout(){
-  
+        collectionView.frame = view.bounds
+        
+        NSLayoutConstraint.activate([
+        ])
     }
+    
     private func getFollowers(){
         
         NetworkManager.shared.getFollowers(for: userName, page: 1) { [weak self] (result) in
