@@ -19,6 +19,7 @@ final class FollowerListVC: UIViewController {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         
+        collectionView.backgroundColor = .systemPink
         collectionView.register(FollowerCell.self,
                                 forCellWithReuseIdentifier: FollowerCell.cellIdentifier)
         return collectionView
@@ -28,6 +29,7 @@ final class FollowerListVC: UIViewController {
         super.viewDidLoad()
         setup()
         layout()
+        getFollowers()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -38,7 +40,11 @@ final class FollowerListVC: UIViewController {
         view.backgroundColor = .systemBackground
         navigationController?.navigationBar.prefersLargeTitles = true
     }
+    
     private func layout(){
+  
+    }
+    private func getFollowers(){
         
         NetworkManager.shared.getFollowers(for: userName, page: 1) { [weak self] (result) in
             switch result {
@@ -49,6 +55,8 @@ final class FollowerListVC: UIViewController {
                 self?.presentCustomAlertOnMainThread(title: "Bad News⛈️", message: error.errorDescription, buttonTitle: "Ok")
             }
         }
+        
+
         
 //        NetworkManager.shared.getFollowersByOldWayWithoutResultType(for: userName, page: 1) { [weak self] (followers, errorMessage) in
 //            guard let followers = followers else {
