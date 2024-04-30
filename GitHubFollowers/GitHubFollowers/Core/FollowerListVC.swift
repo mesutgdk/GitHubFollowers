@@ -45,12 +45,21 @@ final class FollowerListVC: UIViewController {
     }
     
     private func layout(){
-        collectionView.frame = view.bounds
-        
+       
         NSLayoutConstraint.activate([
         ])
     }
     
+    private func setupCollectionViewSetup(){
+        
+        collectionView.frame                = view.bounds
+        let width                           = view.bounds.width
+        let padding : CGFloat               = 12
+        let minimumItemSpacing : CGFloat    = 10
+        let availableWidht = width - (padding * 2) - (minimumItemSpacing * 2)
+        let itemWidht = availableWidht/3
+        
+    }
     private func getFollowers(){
         
         NetworkManager.shared.getFollowers(for: userName, page: 1) { [weak self] (result) in
@@ -63,7 +72,6 @@ final class FollowerListVC: UIViewController {
             }
         }
         
-
         
 //        NetworkManager.shared.getFollowersByOldWayWithoutResultType(for: userName, page: 1) { [weak self] (followers, errorMessage) in
 //            guard let followers = followers else {
