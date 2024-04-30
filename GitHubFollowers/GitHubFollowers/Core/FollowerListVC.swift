@@ -8,27 +8,17 @@
 import UIKit
 
 final class FollowerListVC: UIViewController {
-
+    
     var userName : String = ""
     
-    let collectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-        layout.sectionInset = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
-        
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        
-        collectionView.backgroundColor = .systemPink
-        collectionView.register(FollowerCell.self,
-                                forCellWithReuseIdentifier: FollowerCell.cellIdentifier)
-        return collectionView
-    } ()
+    var collectionView = UICollectionView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
         layout()
+        
+        configureCollectionView()
         getFollowers()
     }
     
@@ -45,21 +35,37 @@ final class FollowerListVC: UIViewController {
     }
     
     private func layout(){
-       
+        
         NSLayoutConstraint.activate([
         ])
     }
     
-    private func setupCollectionViewSetup(){
+    private func configureCollectionView(){
         
-        collectionView.frame                = view.bounds
+        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createThreeColumnFlowLayout())
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        
+        collectionView.backgroundColor = .systemPink
+        collectionView.register(FollowerCell.self,
+                                forCellWithReuseIdentifier: FollowerCell.cellIdentifier)
+    }
+    
+    private func createThreeColumnFlowLayout() -> UICollectionViewFlowLayout{
+                
         let width                           = view.bounds.width
         let padding : CGFloat               = 12
         let minimumItemSpacing : CGFloat    = 10
-        let availableWidht = width - (padding * 2) - (minimumItemSpacing * 2)
-        let itemWidht = availableWidht/3
+        let availableWidht                  = width - (padding * 2) - (minimumItemSpacing * 2)
+        let itemWidht                       = availableWidht/3
         
+        let flowLayout                          = UICollectionViewFlowLayout()
+        flowLayout.scrollDirection              = .vertical
+        flowLayout.sectionInset                 = UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding)
+        flowLayout.itemSize                     = CGSize(width: itemWidht, height: itemWidht + 40)
+        
+        return flowLayout
     }
+    
     private func getFollowers(){
         
         NetworkManager.shared.getFollowers(for: userName, page: 1) { [weak self] (result) in
@@ -73,14 +79,14 @@ final class FollowerListVC: UIViewController {
         }
         
         
-//        NetworkManager.shared.getFollowersByOldWayWithoutResultType(for: userName, page: 1) { [weak self] (followers, errorMessage) in
-//            guard let followers = followers else {
-//                self?.presentCustomAlertOnMainThread(title: "Bad News⛈️", message: errorMessage!.errorDescription, buttonTitle: "Ok")
-//                return
-//            }
-//            print("Followers.count = \(followers.count)")
-//            print(followers)
-//        }
+        //        NetworkManager.shared.getFollowersByOldWayWithoutResultType(for: userName, page: 1) { [weak self] (followers, errorMessage) in
+        //            guard let followers = followers else {
+        //                self?.presentCustomAlertOnMainThread(title: "Bad News⛈️", message: errorMessage!.errorDescription, buttonTitle: "Ok")
+        //                return
+        //            }
+        //            print("Followers.count = \(followers.count)")
+        //            print(followers)
+        //        }
     }
-
+    
 }
