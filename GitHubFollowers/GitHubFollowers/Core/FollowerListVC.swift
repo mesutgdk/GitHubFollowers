@@ -13,6 +13,8 @@ final class FollowerListVC: UIViewController {
     
     var collectionView = UICollectionView()
     
+    var dataSource : UICollectionViewDiffableDataSource!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
