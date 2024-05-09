@@ -57,7 +57,7 @@ final class FollowerListVC: UIViewController {
     }
     
     private func createThreeColumnFlowLayout() -> UICollectionViewFlowLayout{
-                
+        
         let width                           = view.bounds.width
         let padding : CGFloat               = 12
         let minimumItemSpacing : CGFloat    = 10
@@ -83,16 +83,14 @@ final class FollowerListVC: UIViewController {
                 self?.presentCustomAlertOnMainThread(title: "Bad News⛈️", message: error.errorDescription, buttonTitle: "Ok")
             }
         }
-        
-        
-        //        NetworkManager.shared.getFollowersByOldWayWithoutResultType(for: userName, page: 1) { [weak self] (followers, errorMessage) in
-        //            guard let followers = followers else {
-        //                self?.presentCustomAlertOnMainThread(title: "Bad News⛈️", message: errorMessage!.errorDescription, buttonTitle: "Ok")
-        //                return
-        //            }
-        //            print("Followers.count = \(followers.count)")
-        //            print(followers)
-        //        }
+    }
+    
+    private func configureDataSource(){
+        dataSource = UICollectionViewDiffableDataSource<Section,Follower>(collectionView: collectionView, cellProvider: { collectionView, indexPath, follower in
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FollowerCell.cellIdentifier, for: indexPath) as! FollowerCell
+            cell.configure(follower: follower)
+            return cell
+        })
     }
     
 }
