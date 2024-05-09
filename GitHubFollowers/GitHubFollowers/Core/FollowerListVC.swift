@@ -93,4 +93,8 @@ final class FollowerListVC: UIViewController {
         })
     }
     
+    private func updateData(){
+        let snapshot = NSDiffableDataSourceSnapshot<Section,Follower>()
+    }
+    
 }
