@@ -40,7 +40,7 @@ final class FollowerCell: UICollectionViewCell {
             avatarImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: padding),
             avatarImageView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: padding),
             avatarImageView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -padding),
-            avatarImageView.heightAnchor.constraint(equalTo: avatarImageView.widthAnchor)
+            avatarImageView.heightAnchor.constraint(equalTo: avatarImageView.widthAnchor),
         ])
         
         // userNameLabel

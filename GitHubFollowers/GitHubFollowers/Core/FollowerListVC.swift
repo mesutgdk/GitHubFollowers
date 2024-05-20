@@ -17,7 +17,7 @@ final class FollowerListVC: UIViewController {
     
     var followers: [Follower] = []
    
-    var collectionView = UICollectionView()
+    var collectionView : UICollectionView!
     
     var dataSource : UICollectionViewDiffableDataSource<Section, Follower>!
     
@@ -38,7 +38,7 @@ final class FollowerListVC: UIViewController {
     }
     
     private func setup(){
-        view.addSubview(collectionView)
+        
         
         view.backgroundColor = .systemBackground
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -54,6 +54,7 @@ final class FollowerListVC: UIViewController {
         
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createThreeColumnFlowLayout())
         collectionView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(collectionView)
         
         collectionView.backgroundColor = .systemPink
         collectionView.register(FollowerCell.self,
@@ -69,7 +70,7 @@ final class FollowerListVC: UIViewController {
         let itemWidht                       = availableWidht/3
         
         let flowLayout                          = UICollectionViewFlowLayout()
-        flowLayout.scrollDirection              = .vertical
+//        flowLayout.scrollDirection              = .vertical
         flowLayout.sectionInset                 = UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding)
         flowLayout.itemSize                     = CGSize(width: itemWidht, height: itemWidht + 40)
         
