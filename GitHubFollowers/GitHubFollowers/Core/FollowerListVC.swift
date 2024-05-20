@@ -15,6 +15,8 @@ final class FollowerListVC: UIViewController {
     
     var userName : String = ""
     
+    var followers: [Follower] = []
+   
     var collectionView = UICollectionView()
     
     var dataSource : UICollectionViewDiffableDataSource<Section, Follower>!
@@ -26,6 +28,8 @@ final class FollowerListVC: UIViewController {
         
         configureCollectionView()
         getFollowers()
+        configureDataSource()
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -77,8 +81,11 @@ final class FollowerListVC: UIViewController {
         NetworkManager.shared.getFollowers(for: userName, page: 1) { [weak self] (result) in
             switch result {
             case .success(let followers):
-                print("Followers.count = \(followers.count)")
-                print(followers)
+//                print("Followers.count = \(followers.count)")
+//                print(followers)
+                self?.followers = followers
+                self?.updateData()
+                
             case .failure(let error):
                 self?.presentCustomAlertOnMainThread(title: "Bad News⛈️", message: error.errorDescription, buttonTitle: "Ok")
             }
@@ -94,7 +101,11 @@ final class FollowerListVC: UIViewController {
     }
     
     private func updateData(){
-        let snapshot = NSDiffableDataSourceSnapshot<Section,Follower>()
+        var snapshot = NSDiffableDataSourceSnapshot<Section,Follower>()
+        snapshot.appendSections([.main])
+        snapshot.appendItems(followers)
+        DispatchQueue.main.async {self.dataSource.apply(snapshot, animatingDifferences: true)}
+        
     }
     
 }
