@@ -13,7 +13,7 @@ final class FollowerListVC: UIViewController {
         case main
     }
     
-    var userName : String = ""
+    var userName : String?
     
     var followers: [Follower] = []
    
@@ -38,8 +38,6 @@ final class FollowerListVC: UIViewController {
     }
     
     private func setup(){
-        
-        
         view.backgroundColor = .systemBackground
         navigationController?.navigationBar.prefersLargeTitles = true
     }
@@ -53,7 +51,7 @@ final class FollowerListVC: UIViewController {
     private func configureCollectionView(){
         
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createThreeColumnFlowLayout())
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
+//        collectionView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(collectionView)
         
         collectionView.backgroundColor = .systemPink
@@ -78,6 +76,9 @@ final class FollowerListVC: UIViewController {
     }
     
     private func getFollowers(){
+        guard let userName = userName else {
+             return
+        }
         
         NetworkManager.shared.getFollowers(for: userName, page: 1) { [weak self] (result) in
             switch result {
@@ -95,7 +96,8 @@ final class FollowerListVC: UIViewController {
     
     private func configureDataSource(){
         dataSource = UICollectionViewDiffableDataSource<Section,Follower>(collectionView: collectionView, cellProvider: { collectionView, indexPath, follower in
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FollowerCell.cellIdentifier, for: indexPath) as! FollowerCell
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FollowerCell.cellIdentifier, for: indexPath) as? FollowerCell else {return UICollectionViewCell()}
+            
             cell.configure(follower: follower)
             return cell
         })
