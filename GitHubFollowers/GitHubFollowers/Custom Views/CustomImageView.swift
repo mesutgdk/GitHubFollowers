@@ -22,6 +22,7 @@ final class CustomImageView: UIImageView {
         translatesAutoresizingMaskIntoConstraints    = false
         layer.cornerRadius                           = 10
         clipsToBounds                                = true
+        contentMode                                  = .scaleAspectFill
         image                                        = UIImage(named: "avatar-placeholder")
     }
     
