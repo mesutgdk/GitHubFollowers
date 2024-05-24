@@ -50,7 +50,7 @@ final class FollowerListVC: UIViewController {
     
     private func configureCollectionView(){
         
-        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createThreeColumnFlowLayout())
+        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: UIHelper.createThreeColumnFlowLayout(in: view))
 //        collectionView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(collectionView)
         
@@ -58,38 +58,24 @@ final class FollowerListVC: UIViewController {
         collectionView.register(FollowerCell.self,
                                 forCellWithReuseIdentifier: FollowerCell.cellIdentifier)
     }
-    
-    private func createThreeColumnFlowLayout() -> UICollectionViewFlowLayout{
-        
-        let width                           = view.bounds.width
-        let padding : CGFloat               = 12
-        let minimumItemSpacing : CGFloat    = 10
-        let availableWidht                  = width - (padding * 2) - (minimumItemSpacing * 2)
-        let itemWidht                       = availableWidht/3
-        
-        let flowLayout                          = UICollectionViewFlowLayout()
-//        flowLayout.scrollDirection              = .vertical
-        flowLayout.sectionInset                 = UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding)
-        flowLayout.itemSize                     = CGSize(width: itemWidht, height: itemWidht + 40)
-        
-        return flowLayout
-    }
-    
+  
     private func getFollowers(){
         guard let userName = userName else {
              return
         }
         
         NetworkManager.shared.getFollowers(for: userName, page: 1) { [weak self] (result) in
+            guard let self = self else {return}
+            
             switch result {
             case .success(let followers):
 //                print("Followers.count = \(followers.count)")
 //                print(followers)
-                self?.followers = followers
-                self?.updateData()
+                self.followers = followers
+                self.updateData()
                 
             case .failure(let error):
-                self?.presentCustomAlertOnMainThread(title: "Bad News⛈️", message: error.errorDescription, buttonTitle: "Ok")
+                self.presentCustomAlertOnMainThread(title: "Bad News⛈️", message: error.errorDescription, buttonTitle: "Ok")
             }
         }
     }
