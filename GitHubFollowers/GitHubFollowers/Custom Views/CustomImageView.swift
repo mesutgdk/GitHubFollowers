@@ -26,4 +26,11 @@ final class CustomImageView: UIImageView {
         image                                        = UIImage(named: "avatar-placeholder")
     }
     
+    func downloadImage(from urlString: String){
+        guard let url = URL(string: urlString) else {return}
+        
+        let task = URLSession.shared.dataTask(with: url) { data, responce, error in
+            if error != nil {return}
+        }
+    }
 }
