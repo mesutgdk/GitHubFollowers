@@ -9,6 +9,10 @@ import UIKit
 
 final class CustomImageView: UIImageView {
 
+    let cache = NetworkManager.shared.cache
+    
+    let placeHolderImage = UIImage(named: "avatar-placeholder")
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -23,7 +27,7 @@ final class CustomImageView: UIImageView {
         layer.cornerRadius                           = 10
         clipsToBounds                                = true
         contentMode                                  = .scaleAspectFill
-        image                                        = UIImage(named: "avatar-placeholder")
+        image                                        = placeHolderImage
     }
     
     func downloadImage(from urlString: String){
