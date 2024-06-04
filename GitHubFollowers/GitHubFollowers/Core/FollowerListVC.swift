@@ -57,6 +57,7 @@ final class FollowerListVC: UIViewController {
         collectionView.backgroundColor = .systemBackground
         collectionView.register(FollowerCell.self,
                                 forCellWithReuseIdentifier: FollowerCell.cellIdentifier)
+        collectionView.delegate = self
     }
   
     private func getFollowers(){
@@ -79,7 +80,9 @@ final class FollowerListVC: UIViewController {
             }
         }
     }
-    
+
+    // MARK: - DataSource
+
     private func configureDataSource(){
         dataSource = UICollectionViewDiffableDataSource<Section,Follower>(collectionView: collectionView, cellProvider: { collectionView, indexPath, follower in
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FollowerCell.cellIdentifier, for: indexPath) as? FollowerCell else {return UICollectionViewCell()}
@@ -96,5 +99,16 @@ final class FollowerListVC: UIViewController {
         DispatchQueue.main.async {self.dataSource.apply(snapshot, animatingDifferences: true)}
         
     }
-    
+}
+
+extension FollowerListVC: UICollectionViewDelegate{
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        let offSetY             = scrollView.contentOffset.y
+        let contentHeight       = scrollView.contentSize.height
+        let height              = scrollView.frame.size.height
+        
+        print("offSetY          = \(offSetY)")
+        print("contentHeight    = \(contentHeight)")
+        print("height           = \(height)")
+    }
 }
