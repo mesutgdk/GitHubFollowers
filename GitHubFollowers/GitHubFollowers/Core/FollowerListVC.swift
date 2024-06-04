@@ -16,6 +16,8 @@ final class FollowerListVC: UIViewController {
     var userName : String?
     
     var followers: [Follower] = []
+    
+    var page: Int = 1
    
     var collectionView : UICollectionView!
     
@@ -27,7 +29,7 @@ final class FollowerListVC: UIViewController {
         layout()
         
         configureCollectionView()
-        getFollowers()
+        getFollowers(userName: userName, page: page)
         configureDataSource()
         
     }
@@ -60,7 +62,7 @@ final class FollowerListVC: UIViewController {
         collectionView.delegate = self
     }
   
-    private func getFollowers(){
+    private func getFollowers(userName: String?, page: Int){
         guard let userName = userName else {
              return
         }
@@ -107,8 +109,13 @@ extension FollowerListVC: UICollectionViewDelegate{
         let contentHeight       = scrollView.contentSize.height
         let height              = scrollView.frame.size.height
         
-        print("offSetY          = \(offSetY)")
-        print("contentHeight    = \(contentHeight)")
-        print("height           = \(height)")
+//        print("offSetY          = \(offSetY)")
+//        print("contentHeight    = \(contentHeight)")
+//        print("height           = \(height)")
+        
+        if offSetY > contentHeight - height {
+            page += 1
+            getFollowers(userName: userName, page: page)
+        }
     }
 }

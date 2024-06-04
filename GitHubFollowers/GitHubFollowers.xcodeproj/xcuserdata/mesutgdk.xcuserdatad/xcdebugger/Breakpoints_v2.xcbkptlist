@@ -94,9 +94,9 @@
             filePath = "GitHubFollowers/Core/FollowerListVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
-            landmarkName = "getFollowers()"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "getFollowers(userName:page:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -110,9 +110,9 @@
             filePath = "GitHubFollowers/Core/FollowerListVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
-            landmarkName = "getFollowers()"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
+            landmarkName = "getFollowers(userName:page:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
