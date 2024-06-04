@@ -18,6 +18,8 @@ final class FollowerListVC: UIViewController {
     var followers: [Follower] = []
     
     var page: Int = 1
+    
+    var hasMorePage : Bool = true
    
     var collectionView : UICollectionView!
     
@@ -67,14 +69,15 @@ final class FollowerListVC: UIViewController {
              return
         }
         
-        NetworkManager.shared.getFollowers(for: userName, page: 1) { [weak self] (result) in
+        NetworkManager.shared.getFollowers(for: userName, page: page) { [weak self] (result) in
             guard let self = self else {return}
             
             switch result {
             case .success(let followers):
-//                print("Followers.count = \(followers.count)")
-//                print(followers)
-                self.followers = followers
+                if followers.count < 100 {self.hasMorePage = false}
+                
+                self.followers.append(contentsOf: followers) // eşitlemektense append etmek yeni sayfalar için must
+                
                 self.updateData()
                 
             case .failure(let error):
@@ -114,6 +117,8 @@ extension FollowerListVC: UICollectionViewDelegate{
 //        print("height           = \(height)")
         
         if offSetY > contentHeight - height {
+            
+            guard hasMorePage else {return}
             page += 1
             getFollowers(userName: userName, page: page)
         }
