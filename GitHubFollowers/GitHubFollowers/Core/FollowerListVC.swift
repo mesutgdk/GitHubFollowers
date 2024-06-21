@@ -111,11 +111,7 @@ extension FollowerListVC: UICollectionViewDelegate{
         let offSetY             = scrollView.contentOffset.y
         let contentHeight       = scrollView.contentSize.height
         let height              = scrollView.frame.size.height
-        
-//        print("offSetY          = \(offSetY)")
-//        print("contentHeight    = \(contentHeight)")
-//        print("height           = \(height)")
-        
+
         if offSetY > contentHeight - height {
             
             guard hasMorePage else {return}
