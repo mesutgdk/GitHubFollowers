@@ -8,7 +8,7 @@
 import UIKit
 
 class CustomAlertVC: UIViewController {
-
+    
     private let containerView   = {
         let containerView = UIView()
         containerView.backgroundColor = .systemBackground
@@ -19,7 +19,7 @@ class CustomAlertVC: UIViewController {
                                                hasShadow: false)
         return containerView
     } ()
- 
+    
     private let titleLabel      = CustomTitleLabel(textAlignment: .center, fontSize: 20)
     private let messageLabel    = CustomBodyLabel(textAlignment: .center, numberOfLines: 4)
     private let actionButton    = CustomButton(backgroundColor: .systemPink, title: "Ok")
@@ -43,7 +43,7 @@ class CustomAlertVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setup()
         layout()
         
@@ -119,6 +119,4 @@ class CustomAlertVC: UIViewController {
     private func dismissAlert(){
         dismiss(animated: true)
     }
-    
-
 }

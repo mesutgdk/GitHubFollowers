@@ -33,5 +33,5 @@ final class CustomBodyLabel: UILabel {
         lineBreakMode = .byWordWrapping
         translatesAutoresizingMaskIntoContraints(false)
     }
-
+    
 }

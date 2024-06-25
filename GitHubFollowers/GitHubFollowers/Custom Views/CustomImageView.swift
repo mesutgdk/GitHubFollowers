@@ -8,7 +8,7 @@
 import UIKit
 
 final class CustomImageView: UIImageView {
-
+    
     let cache = NetworkManager.shared.cache
     
     let placeHolderImage = UIImage(named: "avatar-placeholder")
