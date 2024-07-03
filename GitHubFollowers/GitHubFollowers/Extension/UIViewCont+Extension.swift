@@ -43,7 +43,13 @@ extension UIViewController{
         ])
         
         activityIndicator.startAnimating()
-        
+    }
+    
+    func dismissLoadingScreen(){
+        DispatchQueue.main.async {
+            containerView.removeFromSuperview() // reverse process of adding subview
+            containerView = nil
+        }
     }
 }
 

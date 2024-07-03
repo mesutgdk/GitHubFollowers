@@ -67,13 +67,16 @@ final class FollowerListVC: UIViewController {
     private func getFollowers(userName: String?, page: Int){
         // show activity indicator while network call
         showLoadingView()
+        
         guard let userName = userName else {
              return
         }
         
         NetworkManager.shared.getFollowers(for: userName, page: page) { [weak self] (result) in
-            #warning("Call Dismiss")
             guard let self = self else {return}
+            
+            //            #warning("Call Dismiss")
+            self.dismissLoadingScreen() // removing activty indicator
             
             switch result {
             case .success(let followers):
