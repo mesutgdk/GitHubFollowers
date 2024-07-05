@@ -82,6 +82,14 @@ final class FollowerListVC: UIViewController {
             case .success(let followers):
                 if followers.count < 100 {self.hasMorePage = false}
                 
+                if followers.isEmpty {
+                    let message = "This User doesn't have any follewers. Let's follow them😇"
+                    DispatchQueue.main.async {
+                        self.showEmptyStateView(with: message, in: self.view)
+                    }
+                    return
+                }
+                
                 self.followers.append(contentsOf: followers) // eşitlemektense append etmek yeni sayfalar için must
                 
                 self.updateData()

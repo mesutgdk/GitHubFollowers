@@ -51,6 +51,13 @@ extension UIViewController{
             containerView = nil
         }
     }
+    
+    // if no follower, this func will be called a new view
+    func showEmptyStateView(with message: String, in view: UIView){
+        let emtyStateView = CustomEmtyStateView(message: message)
+        emtyStateView.frame = view.bounds
+        view.addSubview(emtyStateView)
+    }
 }
 
 
