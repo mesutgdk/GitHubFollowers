@@ -112,6 +112,54 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		632428442C37C4BD003FA7DC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		632428452C37C4D9003FA7DC /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				63CA0DC02B99EA2C00A5285A /* CustomButton.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		632428472C37C4E7003FA7DC /* ImageViews */ = {
+			isa = PBXGroup;
+			children = (
+				634CC69F2BBECF9F00374F87 /* CustomImageView.swift */,
+			);
+			path = ImageViews;
+			sourceTree = "<group>";
+		};
+		632428482C37C4FA003FA7DC /* TextFields */ = {
+			isa = PBXGroup;
+			children = (
+				63326A9C2BA323AE00A289DA /* CustomTextField.swift */,
+			);
+			path = TextFields;
+			sourceTree = "<group>";
+		};
+		632428492C37C50F003FA7DC /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				63B5E87E2BB1C16500C9A9BC /* CustomAlertVC.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		6324284A2C37C6BC003FA7DC /* Labels */ = {
+			isa = PBXGroup;
+			children = (
+				63CE3E842BB2F29C00AC91A8 /* CustomBodyLabel.swift */,
+				633633A72BAF11B0008BE50D /* CustomTitleLabel.swift */,
+			);
+			path = Labels;
+			sourceTree = "<group>";
+		};
 		634CC6972BBE7B9400374F87 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
@@ -161,13 +209,13 @@
 		63CA0DBD2B99E9BA00A5285A /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
+				6324284A2C37C6BC003FA7DC /* Labels */,
+				632428492C37C50F003FA7DC /* ViewControllers */,
+				632428472C37C4E7003FA7DC /* ImageViews */,
+				632428482C37C4FA003FA7DC /* TextFields */,
+				632428452C37C4D9003FA7DC /* Buttons */,
+				632428442C37C4BD003FA7DC /* Views */,
 				634CC69C2BBECE8D00374F87 /* Cell */,
-				63B5E87E2BB1C16500C9A9BC /* CustomAlertVC.swift */,
-				63CA0DC02B99EA2C00A5285A /* CustomButton.swift */,
-				63326A9C2BA323AE00A289DA /* CustomTextField.swift */,
-				633633A72BAF11B0008BE50D /* CustomTitleLabel.swift */,
-				63CE3E842BB2F29C00AC91A8 /* CustomBodyLabel.swift */,
-				634CC69F2BBECF9F00374F87 /* CustomImageView.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
