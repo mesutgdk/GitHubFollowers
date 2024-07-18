@@ -10,7 +10,12 @@ import UIKit
 final class CustomEmtyStateView: UIView {
 
     let messageLabel     = CustomBodyLabel(textAlignment: .center, numberOfLines: 28)
-    let logoImageView    = UIImageView()
+    let logoImageView    = {
+        let logoImageView = UIImageView()
+        logoImageView.image = UIImage(named: "empty-state-logo")
+        logoImageView.translatesAutoresizingMaskIntoConstraints = false
+        return logoImageView
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -37,8 +42,6 @@ final class CustomEmtyStateView: UIView {
         messageLabel.numberOfLines  = 3
         messageLabel.textColor      = .secondaryLabel
         
-        logoImageView.image = UIImage(named: "empty-state-logo")
-        logoImageView.translatesAutoresizingMaskIntoConstraints = false
     }
     
     private func layout(){
@@ -52,8 +55,8 @@ final class CustomEmtyStateView: UIView {
         
         NSLayoutConstraint.activate([
             logoImageView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1.3),
-            logoImageView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 1.3),
-            logoImageView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 170),
+//            logoImageView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 1),
+            logoImageView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 200),
             logoImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 40)
             
         ])
