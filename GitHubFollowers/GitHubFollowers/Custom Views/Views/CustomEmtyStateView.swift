@@ -9,7 +9,7 @@ import UIKit
 
 final class CustomEmtyStateView: UIView {
 
-    let messageLabel     = CustomBodyLabel(textAlignment: .center, numberOfLines: 28)
+    let messageLabel     = CustomBodyLabel(textAlignment: .center, numberOfLines: 3)
     let logoImageView    = {
         let logoImageView = UIImageView()
         logoImageView.image = UIImage(named: "empty-state-logo")
@@ -39,7 +39,7 @@ final class CustomEmtyStateView: UIView {
     private func setup(){
         addSubviews(messageLabel,logoImageView)
         
-        messageLabel.numberOfLines  = 3
+        messageLabel.font = .systemFont(ofSize: 22)
         messageLabel.textColor      = .secondaryLabel
         
     }

@@ -31,6 +31,8 @@ final class FollowerListVC: UIViewController {
         layout()
         
         configureCollectionView()
+        configureSearchController()
+        
         getFollowers(userName: userName, page: page)
         configureDataSource()
         
@@ -64,6 +66,16 @@ final class FollowerListVC: UIViewController {
         collectionView.delegate = self
     }
   
+    // MARK: - search for a follower
+    
+    private func configureSearchController(){
+        let searchController                    = UISearchController()
+        
+        searchController.searchResultsUpdater   = self
+        searchController.searchBar.placeholder  = "Search for a username"
+        navigationItem.searchController         = searchController
+    }
+    
     private func getFollowers(userName: String?, page: Int){
         // show activity indicator while network call
         showLoadingView()
@@ -132,5 +144,11 @@ extension FollowerListVC: UICollectionViewDelegate{
             page += 1
             getFollowers(userName: userName, page: page)
         }
+    }
+}
+
+extension FollowerListVC: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        
     }
 }
