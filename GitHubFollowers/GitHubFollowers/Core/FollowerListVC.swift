@@ -69,11 +69,12 @@ final class FollowerListVC: UIViewController {
     // MARK: - search for a follower
     
     private func configureSearchController(){
-        let searchController                    = UISearchController()
-        
-        searchController.searchResultsUpdater   = self
-        searchController.searchBar.placeholder  = "Search for a username"
-        navigationItem.searchController         = searchController
+        let searchController                                    = UISearchController()
+                        
+        searchController.searchResultsUpdater                   = self
+        searchController.searchBar.placeholder                  = "Search for a username"
+        searchController.obscuresBackgroundDuringPresentation   = false
+        navigationItem.searchController                         = searchController
     }
     
     private func getFollowers(userName: String?, page: Int){
