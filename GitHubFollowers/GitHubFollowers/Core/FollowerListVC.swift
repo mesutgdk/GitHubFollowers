@@ -46,6 +46,7 @@ final class FollowerListVC: UIViewController {
     private func setup(){
         view.backgroundColor = .systemBackground
         navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.hidesSearchBarWhenScrolling = false // sayfa açıldığında searchbarı otomatik açıyor
     }
     
     private func layout(){
@@ -150,6 +151,9 @@ extension FollowerListVC: UICollectionViewDelegate{
 
 extension FollowerListVC: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        
+        guard let filterText = searchController.searchBar.text, !filterText.isEmpty else {
+            updateData()
+            return
+        }
     }
 }
