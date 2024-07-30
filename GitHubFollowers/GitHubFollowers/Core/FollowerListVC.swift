@@ -107,7 +107,7 @@ final class FollowerListVC: UIViewController {
                 
                 self.followers.append(contentsOf: followers) // eşitlemektense append etmek yeni sayfalar için must
                 
-                self.updateData()
+                self.updateData(on: self.followers)
                 
             case .failure(let error):
                 self.presentCustomAlertOnMainThread(title: "Bad News⛈️", message: error.errorDescription, buttonTitle: "Ok")
@@ -126,7 +126,7 @@ final class FollowerListVC: UIViewController {
         })
     }
     
-    private func updateData(){
+    private func updateData(on followers : [Follower]){
         var snapshot = NSDiffableDataSourceSnapshot<Section,Follower>()
         snapshot.appendSections([.main])
         snapshot.appendItems(followers)
@@ -153,15 +153,14 @@ extension FollowerListVC: UICollectionViewDelegate{
 extension FollowerListVC: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         guard let filterText = searchController.searchBar.text, !filterText.isEmpty else {
-            
-            updateData()
+            updateData(on: followers)
             return
         }
         
-        filteredFollowers = followers.filter{
+        filteredFollowers = followers.filter{ 
             $0.login.lowercased().contains(filterText.lowercased())
         }
-        updateData()
+        updateData(on: filteredFollowers)
         
     }
 }
