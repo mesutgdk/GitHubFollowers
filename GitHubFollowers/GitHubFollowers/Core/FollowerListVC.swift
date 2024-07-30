@@ -13,17 +13,18 @@ final class FollowerListVC: UIViewController {
         case main
     }
     
-    var userName : String?
+    var userName            : String?
     
-    var followers: [Follower] = []
+    var followers           : [Follower] = []
+    var filteredFollowers   : [Follower] = []
     
-    var page: Int = 1
+    var page                : Int = 1
     
-    var hasMorePage : Bool = true
+    var hasMorePage         : Bool = true
    
-    var collectionView : UICollectionView!
+    var collectionView      : UICollectionView!
     
-    var dataSource : UICollectionViewDiffableDataSource<Section, Follower>!
+    var dataSource          : UICollectionViewDiffableDataSource<Section, Follower>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -152,8 +153,15 @@ extension FollowerListVC: UICollectionViewDelegate{
 extension FollowerListVC: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         guard let filterText = searchController.searchBar.text, !filterText.isEmpty else {
+            
             updateData()
             return
         }
+        
+        filteredFollowers = followers.filter{
+            $0.login.lowercased().contains(filterText.lowercased())
+        }
+        updateData()
+        
     }
 }
