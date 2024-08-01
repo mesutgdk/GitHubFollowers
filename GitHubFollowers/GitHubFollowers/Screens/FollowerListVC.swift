@@ -47,7 +47,7 @@ final class FollowerListVC: UIViewController {
     private func setup(){
         view.backgroundColor = .systemBackground
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.hidesSearchBarWhenScrolling = false // sayfa açıldığında searchbarı otomatik açıyor
+        navigationItem.hidesSearchBarWhenScrolling = false // sayfa açıldığında searchbarı otomatik açık gösteriyor
     }
     
     private func layout(){
@@ -149,6 +149,9 @@ extension FollowerListVC: UICollectionViewDelegate{
             getFollowers(userName: userName, page: page)
         }
     }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        <#code#>
+    }
 }
 
 extension FollowerListVC: UISearchResultsUpdating, UISearchBarDelegate {
@@ -165,6 +168,7 @@ extension FollowerListVC: UISearchResultsUpdating, UISearchBarDelegate {
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        print("cancel button pressed")
+//        print("cancel button pressed")
+        updateData(on: followers)
     }
 }

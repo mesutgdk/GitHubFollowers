@@ -88,7 +88,8 @@ final class SearchVC: UIViewController {
             searchButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
-    private func createDismissKeyboardTapGesture(){ // taping outside of keyboard disappears the keyboard
+    // MARK: - taping outside of keyboard disappears the keyboard
+    private func createDismissKeyboardTapGesture(){
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
         view.addGestureRecognizer(tap)
     }
