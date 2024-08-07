@@ -15,16 +15,18 @@ final class FollowerListVC: UIViewController {
     
     var userName            : String?
     
-    var followers           : [Follower] = []
-    var filteredFollowers   : [Follower] = []
+    var followers           : [Follower]    = []
+    var filteredFollowers   : [Follower]    = []
     
-    var page                : Int = 1
+    var page                : Int           = 1
     
-    var hasMorePage         : Bool = true
+    var hasMorePage         : Bool          = true
    
     var collectionView      : UICollectionView!
     
     var dataSource          : UICollectionViewDiffableDataSource<Section, Follower>!
+    
+    var isSearching         : Bool          = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -150,7 +152,12 @@ extension FollowerListVC: UICollectionViewDelegate{
         }
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        <#code#>
+        
+        // to determine whether the chosen item is in filtered array or original follower array
+        let determinedFollowers = isSearching ? filteredFollowers : followers
+        
+        let follower = determinedFollowers[indexPath.item]
+        
     }
 }
 
@@ -161,7 +168,9 @@ extension FollowerListVC: UISearchResultsUpdating, UISearchBarDelegate {
             return
         }
         
-        filteredFollowers = followers.filter{ 
+        isSearching = true
+        
+        filteredFollowers = followers.filter{
             $0.login.lowercased().contains(filterText.lowercased())
         }
         updateData(on: filteredFollowers)
@@ -169,6 +178,7 @@ extension FollowerListVC: UISearchResultsUpdating, UISearchBarDelegate {
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
 //        print("cancel button pressed")
+        isSearching = false
         updateData(on: followers)
     }
 }
