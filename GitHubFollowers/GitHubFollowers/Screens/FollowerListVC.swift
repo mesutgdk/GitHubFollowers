@@ -154,9 +154,15 @@ extension FollowerListVC: UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         // to determine whether the chosen item is in filtered array or original follower array
-        let determinedFollowers = isSearching ? filteredFollowers : followers
+        let determinedFollowers     = isSearching ? filteredFollowers : followers
         
-        let follower = determinedFollowers[indexPath.item]
+        let follower                = determinedFollowers[indexPath.item]
+        
+        let destinationVC           = UserInfoVC()
+        
+        let navContDestVC           = UINavigationController(rootViewController: destinationVC)
+        
+        present(navContDestVC, animated: true)
         
     }
 }
