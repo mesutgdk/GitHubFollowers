@@ -9,13 +9,15 @@ import UIKit
 
 final class UserInfoVC: UIViewController {
     
-    var userName : Follower
+    var userName : Follower? 
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
         layout()
         createDoneButton()
+        
+        print(userName?.login)
     }
     
     

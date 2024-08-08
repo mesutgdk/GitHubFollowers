@@ -160,7 +160,10 @@ extension FollowerListVC: UICollectionViewDelegate{
         
         let destinationVC           = UserInfoVC()
         
+        destinationVC.userName = follower
+        
         let navContDestVC           = UINavigationController(rootViewController: destinationVC)
+        
         
         present(navContDestVC, animated: true)
         
