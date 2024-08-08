@@ -83,6 +83,8 @@ final class NetworkManager{
                 
                 let userInfo = try decoder.decode(User.self, from: data)
                 
+                print(userInfo)
+                
                 comletion(.success(userInfo)) // işlem başarılı, decode ettiğimizi yukarı atıyoruz
             } catch{
                 comletion(.failure(.decodingError))
