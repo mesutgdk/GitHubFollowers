@@ -17,6 +17,7 @@
 		634CC69E2BBECEA900374F87 /* FollowerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634CC69D2BBECEA900374F87 /* FollowerCell.swift */; };
 		634CC6A02BBECF9F00374F87 /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634CC69F2BBECF9F00374F87 /* CustomImageView.swift */; };
 		635913402C771A0500F3E86E /* CustomUserInfoHeaderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6359133F2C771A0500F3E86E /* CustomUserInfoHeaderVC.swift */; };
+		635913422C771AC000F3E86E /* CustomSecondaryTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635913412C771AC000F3E86E /* CustomSecondaryTitleLabel.swift */; };
 		6359ED072BBC394300DB8C5E /* Follower.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6359ED062BBC394300DB8C5E /* Follower.swift */; };
 		6359ED092BBC39A400DB8C5E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6359ED082BBC39A400DB8C5E /* User.swift */; };
 		637CE6DF2B9B36DC00077953 /* GFTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637CE6DE2B9B36DC00077953 /* GFTabViewController.swift */; };
@@ -67,6 +68,7 @@
 		634CC69D2BBECEA900374F87 /* FollowerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerCell.swift; sourceTree = "<group>"; };
 		634CC69F2BBECF9F00374F87 /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
 		6359133F2C771A0500F3E86E /* CustomUserInfoHeaderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUserInfoHeaderVC.swift; sourceTree = "<group>"; };
+		635913412C771AC000F3E86E /* CustomSecondaryTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSecondaryTitleLabel.swift; sourceTree = "<group>"; };
 		6359ED062BBC394300DB8C5E /* Follower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Follower.swift; sourceTree = "<group>"; };
 		6359ED082BBC39A400DB8C5E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		637CE6DE2B9B36DC00077953 /* GFTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFTabViewController.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 			children = (
 				63CE3E842BB2F29C00AC91A8 /* CustomBodyLabel.swift */,
 				633633A72BAF11B0008BE50D /* CustomTitleLabel.swift */,
+				635913412C771AC000F3E86E /* CustomSecondaryTitleLabel.swift */,
 			);
 			path = Labels;
 			sourceTree = "<group>";
@@ -443,6 +446,7 @@
 				6327F8DC2BB401BB00A32E7D /* UIViewCont+Extension.swift in Sources */,
 				6359ED072BBC394300DB8C5E /* Follower.swift in Sources */,
 				634CC69B2BBE9DCC00374F87 /* AppError.swift in Sources */,
+				635913422C771AC000F3E86E /* CustomSecondaryTitleLabel.swift in Sources */,
 				63B6AF8D2C00AFF800146D7E /* UIHelper.swift in Sources */,
 				63DBC94F2B9605EB002D97C4 /* AppDelegate.swift in Sources */,
 				63CA0DC12B99EA2C00A5285A /* CustomButton.swift in Sources */,
