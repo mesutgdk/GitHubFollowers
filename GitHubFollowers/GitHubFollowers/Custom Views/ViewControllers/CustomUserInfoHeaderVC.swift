@@ -54,7 +54,34 @@ final class CustomUserInfoHeaderVC: UIViewController {
         let padding             :CGFloat        = 20
         let textImagePadding    :CGFloat        = 12
         
+        // avatarImageView
+        NSLayoutConstraint.activate([
+            avatarImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: padding),
+            avatarImageView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: padding),
+            avatarImageView.heightAnchor.constraint(equalToConstant: 90),
+            avatarImageView.widthAnchor.constraint(equalToConstant: 90)
+        ])
         
+        // usernameLabel
+        NSLayoutConstraint.activate([
+            usernameLabel.topAnchor.constraint(equalTo: avatarImageView.topAnchor),
+            usernameLabel.leftAnchor.constraint(equalTo: avatarImageView.rightAnchor, constant: textImagePadding),
+            usernameLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -padding),
+            usernameLabel.heightAnchor.constraint(equalToConstant: 38)
+        ])
+        
+        NSLayoutConstraint.activate([
+            nameLabel.centerYAnchor.constraint(equalTo: avatarImageView.centerYAnchor, constant: 8),
+            nameLabel.leftAnchor.constraint(equalTo: avatarImageView.rightAnchor, constant: textImagePadding),
+            nameLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -padding),
+            nameLabel.heightAnchor.constraint(equalToConstant: 20)
+        ])
+        
+        NSLayoutConstraint.activate([
+            locationLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            locationLabel.leftAnchor.constraint(equalTo: avatarImageView.rightAnchor, constant: textImagePadding),
+            locationLabel.widthAnchor.constraint(equalToConstant: 20)
+        ])
     }
     
 }
