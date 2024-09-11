@@ -78,9 +78,17 @@ final class CustomUserInfoHeaderVC: UIViewController {
         ])
         
         NSLayoutConstraint.activate([
-            locationLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            locationLabel.leftAnchor.constraint(equalTo: avatarImageView.rightAnchor, constant: textImagePadding),
-            locationLabel.widthAnchor.constraint(equalToConstant: 20)
+            locationImageView.bottomAnchor.constraint(equalTo: avatarImageView.bottomAnchor),
+            locationImageView.leftAnchor.constraint(equalTo: avatarImageView.leftAnchor, constant: textImagePadding),
+            locationImageView.widthAnchor.constraint(equalToConstant: 20),
+            locationImageView.heightAnchor.constraint(equalToConstant: 20)
+        ])
+        
+        NSLayoutConstraint.activate([
+            locationLabel.centerYAnchor.constraint(equalTo: locationImageView.centerYAnchor),
+            locationLabel.leftAnchor.constraint(equalTo: locationImageView.rightAnchor, constant: 5),
+            locationLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -padding),
+            locationLabel.heightAnchor.constraint(equalToConstant: 20)
         ])
     }
     
