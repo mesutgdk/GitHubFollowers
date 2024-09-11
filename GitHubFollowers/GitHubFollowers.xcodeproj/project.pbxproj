@@ -35,6 +35,7 @@
 		63DBC9662B9605EC002D97C4 /* GitHubFollowersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DBC9652B9605EC002D97C4 /* GitHubFollowersTests.swift */; };
 		63DBC9702B9605EC002D97C4 /* GitHubFollowersUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DBC96F2B9605EC002D97C4 /* GitHubFollowersUITests.swift */; };
 		63DBC9722B9605EC002D97C4 /* GitHubFollowersUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DBC9712B9605EC002D97C4 /* GitHubFollowersUITestsLaunchTests.swift */; };
+		63DDF08C2C9195C7006B9218 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DDF08B2C9195C7006B9218 /* Constants.swift */; };
 		63EB9F0E2B985BCD00A8D8B7 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EB9F0D2B985BCD00A8D8B7 /* String+Extension.swift */; };
 		63F0867D2B975FF40083780D /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F0867C2B975FF40083780D /* UIView+Extension.swift */; };
 		63FA7FD12BAC81260055D781 /* FollowerListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FA7FD02BAC81260055D781 /* FollowerListVC.swift */; };
@@ -90,6 +91,7 @@
 		63DBC96B2B9605EC002D97C4 /* GitHubFollowersUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GitHubFollowersUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		63DBC96F2B9605EC002D97C4 /* GitHubFollowersUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubFollowersUITests.swift; sourceTree = "<group>"; };
 		63DBC9712B9605EC002D97C4 /* GitHubFollowersUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubFollowersUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		63DDF08B2C9195C7006B9218 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		63EB9F0D2B985BCD00A8D8B7 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		63F0867C2B975FF40083780D /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		63FA7FD02BAC81260055D781 /* FollowerListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerListVC.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 				634CC69A2BBE9DCC00374F87 /* AppError.swift */,
 				634CC6982BBE7C2B00374F87 /* ErrorMessage.swift */,
 				63B6AF8C2C00AFF800146D7E /* UIHelper.swift */,
+				63DDF08B2C9195C7006B9218 /* Constants.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -469,6 +472,7 @@
 				63DBC9512B9605EB002D97C4 /* SceneDelegate.swift in Sources */,
 				63326A9D2BA323AE00A289DA /* CustomTextField.swift in Sources */,
 				6310E5102C5BAD75009C8634 /* UserInfoVC.swift in Sources */,
+				63DDF08C2C9195C7006B9218 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
