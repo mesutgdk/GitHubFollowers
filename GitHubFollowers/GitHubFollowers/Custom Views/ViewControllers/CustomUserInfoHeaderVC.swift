@@ -35,21 +35,23 @@ final class CustomUserInfoHeaderVC: UIViewController {
         super.viewDidLoad()
         setup()
         layout()
-
+        configureUIElements()
     }
     
-    private func downloadUIElements(){
+    private func configureUIElements(){
         guard let user = user else {
             presentCustomAlertOnMainThread(title: "No User!", message: "Pls try it again.", buttonTitle: "Ok")
             return
         }
         avatarImageView.downloadImage(from: user.avatarUrl)
+        
         usernameLabel.text              = user.login
         nameLabel.text                  = user.name ?? ""
         locationLabel.text              = user.location ?? "No Location"
         bioLabel.text                   = user.bio ?? "No bio available"
         bioLabel.numberOfLines          = 3
-        locationImageView.image         = UIImage(systemName: SFSembols.location)
+        locationImageView.image         = UIImage(systemName: SFSymbols.location)
+        locationImageView.tintColor     = .secondaryLabel
     }
     
     private func setup(){
@@ -93,7 +95,7 @@ final class CustomUserInfoHeaderVC: UIViewController {
         
         NSLayoutConstraint.activate([
             locationImageView.bottomAnchor.constraint(equalTo: avatarImageView.bottomAnchor),
-            locationImageView.leftAnchor.constraint(equalTo: avatarImageView.leftAnchor, constant: textImagePadding),
+            locationImageView.leftAnchor.constraint(equalTo: avatarImageView.rightAnchor, constant: textImagePadding),
             locationImageView.widthAnchor.constraint(equalToConstant: 20),
             locationImageView.heightAnchor.constraint(equalToConstant: 20)
         ])
