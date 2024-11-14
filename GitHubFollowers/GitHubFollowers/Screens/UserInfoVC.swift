@@ -10,6 +10,8 @@ import UIKit
 final class UserInfoVC: UIViewController {
     
     let headerView = UIView()
+    let itemViewOne = UIView()
+    let itemViewTwo = UIView()
     
     var userName : String?
 
@@ -24,19 +26,41 @@ final class UserInfoVC: UIViewController {
     
     
     private func setup(){
-        view.addSubview(headerView)
+        view.addSubviews(
+            headerView,
+            itemViewOne,
+            itemViewTwo
+        )
         view.backgroundColor = .systemBackground
         
-        headerView.translatesAutoresizingMaskIntoConstraints = false
+        headerView.translatesAutoresizingMaskIntoConstraints    = false
+        itemViewOne.translatesAutoresizingMaskIntoConstraints   = false
+        itemViewTwo.translatesAutoresizingMaskIntoConstraints   = false
 
     }
     
     private func layout(){
+        let padding: CGFloat = 20
+        
         NSLayoutConstraint.activate([
             headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            headerView.leftAnchor.constraint(equalTo: view.leftAnchor),
-            headerView.rightAnchor.constraint(equalTo: view.rightAnchor),
+            headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             headerView.heightAnchor.constraint(equalToConstant: 180)
+        ])
+        
+        NSLayoutConstraint.activate([
+            itemViewOne.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: padding),
+            itemViewOne.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+            itemViewOne.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            itemViewOne.heightAnchor.constraint(equalToConstant: 140)
+        ])
+        
+        NSLayoutConstraint.activate([
+            itemViewTwo.topAnchor.constraint(equalTo: itemViewOne.bottomAnchor, constant: padding),
+            itemViewTwo.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+            itemViewTwo.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            itemViewTwo.heightAnchor.constraint(equalToConstant: 140)
         ])
     }
     
