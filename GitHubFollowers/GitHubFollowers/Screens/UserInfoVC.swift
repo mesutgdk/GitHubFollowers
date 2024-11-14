@@ -36,11 +36,15 @@ final class UserInfoVC: UIViewController {
         headerView.translatesAutoresizingMaskIntoConstraints    = false
         itemViewOne.translatesAutoresizingMaskIntoConstraints   = false
         itemViewTwo.translatesAutoresizingMaskIntoConstraints   = false
-
+        
+        itemViewOne.backgroundColor = .systemRed
+        itemViewTwo.backgroundColor = .systemBlue
+        
     }
     
     private func layout(){
-        let padding: CGFloat = 20
+        let padding: CGFloat    = 20
+        let itemHeight: CGFloat = 140
         
         NSLayoutConstraint.activate([
             headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -53,17 +57,16 @@ final class UserInfoVC: UIViewController {
             itemViewOne.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: padding),
             itemViewOne.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
             itemViewOne.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
-            itemViewOne.heightAnchor.constraint(equalToConstant: 140)
+            itemViewOne.heightAnchor.constraint(equalToConstant: itemHeight)
         ])
         
         NSLayoutConstraint.activate([
             itemViewTwo.topAnchor.constraint(equalTo: itemViewOne.bottomAnchor, constant: padding),
             itemViewTwo.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
             itemViewTwo.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
-            itemViewTwo.heightAnchor.constraint(equalToConstant: 140)
+            itemViewTwo.heightAnchor.constraint(equalToConstant: itemHeight)
         ])
     }
-    
     
     private func createDoneButton(){
         navigationController?.navigationBar.isHidden = false
