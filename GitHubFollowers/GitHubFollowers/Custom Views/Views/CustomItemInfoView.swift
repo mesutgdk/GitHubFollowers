@@ -7,6 +7,10 @@
 
 import UIKit
 
+enum ItemInfoType{
+    case repos, gists, followers, following
+}
+
 class CustomItemInfoView: UIView {
 
     let symbolImageView = UIImageView()
@@ -15,17 +19,12 @@ class CustomItemInfoView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        configure()
         setup()
         layout()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    func configure(){
-        
     }
     
     func setup(){
@@ -65,5 +64,23 @@ class CustomItemInfoView: UIView {
             countLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             countLabel.heightAnchor.constraint(equalToConstant: 18)
         ])
+    }
+    
+    func set(ItemInfoType: ItemInfoType, withCount count: Int){
+        switch ItemInfoType {
+        case .repos:
+            symbolImageView.image   = UIImage(systemName: SFSymbols.repos)
+            titleLabel.text         = "Public Repos"
+        case .gists:
+            symbolImageView.image   = UIImage(systemName: SFSymbols.gists)
+            titleLabel.text         = "Public Gists"
+        case .followers:
+            symbolImageView.image   = UIImage(systemName: SFSymbols.followers)
+            titleLabel.text         = "Followers"
+        case .following:
+            symbolImageView.image   = UIImage(systemName: SFSymbols.following)
+            titleLabel.text         = "Following"
+        }
+        countLabel.text         = String(count)
     }
 }
