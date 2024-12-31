@@ -53,7 +53,8 @@ final class NetworkManager{
         }
         task.resume()
     }
-    
+  
+    // MARK: -
     
     func getUserInfo(for username: String, comletion: @escaping (Result<User,AppError>)-> Void){
         let endpoint = baseURL + "\(username)"
@@ -92,6 +93,39 @@ final class NetworkManager{
         }
         task.resume()
     }
+    
+    // MARK: - last version - async await
+    
+    func getUserInfoAsyncAwaitVersion(for username: String) async throws -> User {
+        let endpoint = baseURL + "\(username)"
+        
+        // Ensure the endpoint URL is valid
+        guard let url = endpoint.asUrl else {
+            throw AppError.invalidUsername
+        }
+        
+        do {
+            // Perform the network request
+            let (data, response) = try await URLSession.shared.data(from: url)
+            
+            // Validate HTTP response
+            guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+                throw AppError.invalidResponce
+            }
+            
+            // Decode the JSON response into the User model
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
+            let userInfo = try decoder.decode(User.self, from: data)
+            
+            return userInfo
+        } catch let decodingError as DecodingError {
+            throw AppError.decodingError
+        } catch let canHandleRequest {
+            throw AppError.cantHandleRequest
+        }
+    }
+
     // MARK: - Old networkingway without result type
     // before swift 5, the old way with network, maybe it helps refactoring at some companies
     func getFollowersByOldWayWithoutResultType(for username: String, page: Int, comletion: @escaping ([Follower]?, ErrorMessage?)-> Void){

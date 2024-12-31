@@ -14,6 +14,6 @@ class CustomRepoItemVC: CustomItemInfoVC{
     }
     
     private func configureItem(){
-        itemInfoViewOne.set(ItemInfoType: .repos, withCount: <#T##Int#>)
+        itemInfoViewOne.set(ItemInfoType: .repos, withCount: 2)
     }
 }
