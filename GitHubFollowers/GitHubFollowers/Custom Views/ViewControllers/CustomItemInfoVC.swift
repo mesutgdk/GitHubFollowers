@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class CustomItemInfoVC: UIViewController {
+class CustomItemInfoVC: UIViewController {
 
     let stackView = UIStackView()
     let itemInfoViewOne = CustomItemInfoView()
