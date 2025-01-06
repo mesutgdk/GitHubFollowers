@@ -37,8 +37,8 @@ final class UserInfoVC: UIViewController {
         itemViewOne.translatesAutoresizingMaskIntoConstraints   = false
         itemViewTwo.translatesAutoresizingMaskIntoConstraints   = false
         
-        itemViewOne.backgroundColor = .systemRed
-        itemViewTwo.backgroundColor = .systemBlue
+//        itemViewOne.backgroundColor = .systemRed
+//        itemViewTwo.backgroundColor = .systemBlue
         
     }
     
@@ -91,6 +91,8 @@ final class UserInfoVC: UIViewController {
 //                print(user)
                 DispatchQueue.main.async {
                     self.addVC(childVC: CustomUserInfoHeaderVC(user: user), to: self.headerView)
+                    self.addVC(childVC: CustomRepoItemVC(user: user), to: self.itemViewOne)
+                    self.addVC(childVC: CustomItemInfoVC(user: user), to: self.itemViewTwo)
                 }
                 
             case .failure(let error):
