@@ -31,4 +31,9 @@ final class CustomButton: UIButton{
         translatesAutoresizingMaskIntoContraints(false)
         addCornerRadiusAndShadow(self, cornerRadius: 10, borderWith: 0, borderColor: .black, hasShadow: true)
     }
+    
+    func set(backgroundColor: UIColor, title: String){
+        self.backgroundColor = backgroundColor
+        setTitle(title, for: .normal)
+    }
 }
