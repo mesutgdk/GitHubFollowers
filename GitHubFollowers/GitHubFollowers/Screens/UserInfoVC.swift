@@ -48,8 +48,8 @@ final class UserInfoVC: UIViewController {
         
         NSLayoutConstraint.activate([
             headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+            headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
             headerView.heightAnchor.constraint(equalToConstant: 180)
         ])
         
@@ -76,9 +76,6 @@ final class UserInfoVC: UIViewController {
         navigationItem.rightBarButtonItem = doneButton
     }
 
-    @objc func dismissVC(){
-        dismiss(animated: true)
-    }
     
     private func makeNetworkCall(userName: String?){
         guard let userName = userName else {return}
@@ -106,5 +103,9 @@ final class UserInfoVC: UIViewController {
         containerView.addSubview(childVC.view)
         childVC.view.frame = containerView.bounds
         childVC.didMove(toParent: self)
+    }
+    
+    @objc func dismissVC(){
+        dismiss(animated: true)
     }
 }

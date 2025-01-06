@@ -119,9 +119,9 @@ final class NetworkManager{
             let userInfo = try decoder.decode(User.self, from: data)
             
             return userInfo
-        } catch let decodingError as DecodingError {
+        } catch _ as DecodingError {
             throw AppError.decodingError
-        } catch let canHandleRequest {
+        } catch _ {
             throw AppError.cantHandleRequest
         }
     }
