@@ -28,8 +28,9 @@ class CustomItemInfoVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        layout()
         configureStackView()
+        layout()
+        
     }
     private func setup(){
         view.layer.cornerRadius = 18
@@ -42,7 +43,6 @@ class CustomItemInfoVC: UIViewController {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         actionButton.translatesAutoresizingMaskIntoConstraints = false
         
- 
     }
     
     private func layout(){

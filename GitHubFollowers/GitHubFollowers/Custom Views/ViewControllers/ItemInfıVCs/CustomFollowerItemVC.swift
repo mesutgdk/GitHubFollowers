@@ -11,6 +11,7 @@ class CustomFollowerItemVC: CustomItemInfoVC{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureItem()
     }
     
     private func configureItem(){

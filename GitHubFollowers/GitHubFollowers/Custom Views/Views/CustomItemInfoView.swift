@@ -37,7 +37,7 @@ class CustomItemInfoView: UIView {
         symbolImageView.translatesAutoresizingMaskIntoConstraints = false
         symbolImageView.contentMode = .scaleAspectFill
         symbolImageView.tintColor = .label
-        
+                
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         countLabel.translatesAutoresizingMaskIntoConstraints = false
         
@@ -83,4 +83,5 @@ class CustomItemInfoView: UIView {
         }
         countLabel.text         = String(count)
     }
+    
 }

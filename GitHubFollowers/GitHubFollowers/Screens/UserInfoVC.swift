@@ -89,7 +89,7 @@ final class UserInfoVC: UIViewController {
                 DispatchQueue.main.async {
                     self.addVC(childVC: CustomUserInfoHeaderVC(user: user), to: self.headerView)
                     self.addVC(childVC: CustomRepoItemVC(user: user), to: self.itemViewOne)
-                    self.addVC(childVC: CustomItemInfoVC(user: user), to: self.itemViewTwo)
+                    self.addVC(childVC: CustomFollowerItemVC(user: user), to: self.itemViewTwo)
                 }
                 
             case .failure(let error):
