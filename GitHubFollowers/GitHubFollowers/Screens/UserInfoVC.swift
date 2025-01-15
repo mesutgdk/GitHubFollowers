@@ -9,9 +9,10 @@ import UIKit
 
 final class UserInfoVC: UIViewController {
     
-    let headerView = UIView()
+    let headerView  = UIView()
     let itemViewOne = UIView()
     let itemViewTwo = UIView()
+    let dateLabel   = CustomBodyLabel(textAlignment: .center, numberOfLines: 1)
     
     var userName : String?
 
@@ -29,13 +30,15 @@ final class UserInfoVC: UIViewController {
         view.addSubviews(
             headerView,
             itemViewOne,
-            itemViewTwo
+            itemViewTwo,
+            dateLabel
         )
         view.backgroundColor = .systemBackground
         
         headerView.translatesAutoresizingMaskIntoConstraints    = false
         itemViewOne.translatesAutoresizingMaskIntoConstraints   = false
         itemViewTwo.translatesAutoresizingMaskIntoConstraints   = false
+        dateLabel.translatesAutoresizingMaskIntoConstraints    = false
         
 //        itemViewOne.backgroundColor = .systemRed
 //        itemViewTwo.backgroundColor = .systemBlue
@@ -66,6 +69,14 @@ final class UserInfoVC: UIViewController {
             itemViewTwo.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
             itemViewTwo.heightAnchor.constraint(equalToConstant: itemHeight)
         ])
+        
+        NSLayoutConstraint.activate([
+            dateLabel.topAnchor.constraint(equalTo: itemViewTwo.bottomAnchor, constant: padding),
+            dateLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+            dateLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            dateLabel.heightAnchor.constraint(equalToConstant: 18)
+
+        ])
     }
     
     private func createDoneButton(){
@@ -90,6 +101,7 @@ final class UserInfoVC: UIViewController {
                     self.addVC(childVC: CustomUserInfoHeaderVC(user: user), to: self.headerView)
                     self.addVC(childVC: CustomRepoItemVC(user: user), to: self.itemViewOne)
                     self.addVC(childVC: CustomFollowerItemVC(user: user), to: self.itemViewTwo)
+                    self.dateLabel.text = "Date to be entered."
                 }
                 
             case .failure(let error):

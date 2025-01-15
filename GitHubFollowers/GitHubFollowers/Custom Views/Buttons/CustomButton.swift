@@ -11,6 +11,7 @@ final class CustomButton: UIButton{
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        configure()
     }
     
     required init?(coder: NSCoder) {
@@ -24,7 +25,7 @@ final class CustomButton: UIButton{
         configure()
     }
     
-    func configure(){
+    private func configure(){
         titleLabel?.font        = UIFont.preferredFont(forTextStyle: .headline)
         
         setTitleColor(.white, for: .normal)
