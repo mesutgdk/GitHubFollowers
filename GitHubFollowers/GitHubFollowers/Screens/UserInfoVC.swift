@@ -101,7 +101,9 @@ final class UserInfoVC: UIViewController {
                     self.addVC(childVC: CustomUserInfoHeaderVC(user: user), to: self.headerView)
                     self.addVC(childVC: CustomRepoItemVC(user: user), to: self.itemViewOne)
                     self.addVC(childVC: CustomFollowerItemVC(user: user), to: self.itemViewTwo)
-                    self.dateLabel.text = "Date to be entered."
+                    
+                    // dateconverter used to make string to date to string
+                    self.dateLabel.text = "GitHub Since " + user.createdAt.convertToDisplayDate()
                 }
                 
             case .failure(let error):
