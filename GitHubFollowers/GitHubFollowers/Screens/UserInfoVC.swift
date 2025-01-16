@@ -101,21 +101,26 @@ final class UserInfoVC: UIViewController {
             switch result {
             case .success(let user):
 //                print(user)
-                DispatchQueue.main.async {
-                    self.addVC(childVC: AppUserInfoHeaderVC(user: user), to: self.headerView)
-                    let repoInfoVC = AppFollowerItemInfoVC(user: user)
-                    repoInfoVC.delegate = self
-                    
-                    self.addVC(childVC: AppFollowerRepoItemVC(user: user), to: self.itemViewOne)
-                    self.addVC(childVC: AppFollowerItemVC(user: user), to: self.itemViewTwo)
-                    
-                    // dateconverter used to make string to date to string
-                    self.dateLabel.text = "GitHub Since " + user.createdAt.convertToDisplayDate()
-                }
+               
+                self.configureUIElements(with: user)
                 
             case .failure(let error):
                 self.presentCustomAlertOnMainThread(title: "Bad News⛈️", message: error.errorDescription, buttonTitle: "Ok")
             }
+        }
+    }
+    
+    private func configureUIElements( with user: User){
+        DispatchQueue.main.async {
+            
+            let repoInfoVC = AppFollowerItemInfoVC(user: user)
+            repoInfoVC.delegate = self
+            
+            self.addVC(childVC: AppFollowerRepoItemVC(user: user), to: self.itemViewOne)
+            self.addVC(childVC: AppFollowerItemVC(user: user), to: self.itemViewTwo)
+            self.addVC(childVC: AppUserInfoHeaderVC(user: user), to: self.headerView)
+            // dateconverter used to make string to date to string
+            self.dateLabel.text = "GitHub Since " + user.createdAt.convertToDisplayDate()
         }
     }
     
