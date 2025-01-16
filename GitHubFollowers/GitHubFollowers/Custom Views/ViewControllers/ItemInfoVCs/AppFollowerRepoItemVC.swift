@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CustomRepoItemVC: CustomItemInfoVC{
+class AppFollowerRepoItemVC: AppFollowerItemInfoVC{
     
     override func viewDidLoad() {
         super.viewDidLoad()

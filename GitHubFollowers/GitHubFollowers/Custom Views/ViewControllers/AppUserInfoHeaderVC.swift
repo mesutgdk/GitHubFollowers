@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class CustomUserInfoHeaderVC: UIViewController {
+final class AppUserInfoHeaderVC: UIViewController {
 
     let avatarImageView     = CustomImageView(frame: .zero)
     let usernameLabel       = CustomTitleLabel(textAlignment: .left, fontSize: 34)

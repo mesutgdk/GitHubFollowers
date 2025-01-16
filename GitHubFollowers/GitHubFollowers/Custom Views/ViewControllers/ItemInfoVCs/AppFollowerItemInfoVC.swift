@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CustomItemInfoVC: UIViewController {
+class AppFollowerItemInfoVC: UIViewController {
 
     let stackView = UIStackView()
     let itemInfoViewOne = CustomItemInfoView()
@@ -15,6 +15,8 @@ class CustomItemInfoVC: UIViewController {
     let actionButton    = CustomButton()
     
     var user : User!
+    
+    var delegate : UserInfoVCDelegate?
     
     init(user: User?) {
         super.init(nibName: nil, bundle: nil)

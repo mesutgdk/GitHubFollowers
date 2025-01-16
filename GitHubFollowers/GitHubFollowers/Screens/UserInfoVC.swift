@@ -102,9 +102,12 @@ final class UserInfoVC: UIViewController {
             case .success(let user):
 //                print(user)
                 DispatchQueue.main.async {
-                    self.addVC(childVC: CustomUserInfoHeaderVC(user: user), to: self.headerView)
-                    self.addVC(childVC: CustomRepoItemVC(user: user), to: self.itemViewOne)
-                    self.addVC(childVC: CustomFollowerItemVC(user: user), to: self.itemViewTwo)
+                    self.addVC(childVC: AppUserInfoHeaderVC(user: user), to: self.headerView)
+                    let repoInfoVC = AppFollowerItemInfoVC(user: user)
+                    repoInfoVC.delegate = self
+                    
+                    self.addVC(childVC: AppFollowerRepoItemVC(user: user), to: self.itemViewOne)
+                    self.addVC(childVC: AppFollowerItemVC(user: user), to: self.itemViewTwo)
                     
                     // dateconverter used to make string to date to string
                     self.dateLabel.text = "GitHub Since " + user.createdAt.convertToDisplayDate()
