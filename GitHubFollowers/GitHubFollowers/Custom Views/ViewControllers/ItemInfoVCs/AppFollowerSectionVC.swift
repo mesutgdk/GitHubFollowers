@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AppFollowerItemVC: AppFollowerItemInfoVC{
+class AppFollowerSectionVC: AppItemInfoVC{
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AppFollowerItemInfoVC: UIViewController {
+class AppItemInfoVC: UIViewController {
 
     let stackView = UIStackView()
     let itemInfoViewOne = CustomItemInfoView()
@@ -16,7 +16,7 @@ class AppFollowerItemInfoVC: UIViewController {
     
     var user : User!
     
-    var delegate : UserInfoVCDelegate?
+    weak var delegate : UserInfoVCDelegate?
     
     init(user: User?) {
         super.init(nibName: nil, bundle: nil)
@@ -74,5 +74,11 @@ class AppFollowerItemInfoVC: UIViewController {
         stackView.addArrangedSubview(itemInfoViewTwo)
 
     }
-
+    
+    private func configureActionButton(){
+        actionButton.addTarget(self, action: #selector(actionButtonTapped), for: .touchUpInside)
+    }
+    @objc private func actionButtonTapped(){
+        
+    }
 }

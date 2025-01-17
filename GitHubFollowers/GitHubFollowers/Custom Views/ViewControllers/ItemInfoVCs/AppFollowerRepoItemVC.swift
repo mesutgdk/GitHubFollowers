@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AppFollowerRepoItemVC: AppFollowerItemInfoVC{
+class AppFollowerRepoItemVC: AppItemInfoVC{
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,5 +18,9 @@ class AppFollowerRepoItemVC: AppFollowerItemInfoVC{
         itemInfoViewOne.set(ItemInfoType: .repos, withCount: user.publicRepos)
         itemInfoViewTwo.set(ItemInfoType: .gists, withCount: user.publicGists)
         actionButton.set(backgroundColor: .systemPurple, title: "GitHub Profile")
+    }
+    
+    func actionButtonTapped() {
+        delegate?.didTapFollowers()
     }
 }
