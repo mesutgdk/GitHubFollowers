@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SafariServices
 
 fileprivate var containerView : UIView!
 
@@ -57,6 +58,12 @@ extension UIViewController{
         let emtyStateView = CustomEmtyStateView(message: message)
         emtyStateView.frame = view.bounds
         view.addSubview(emtyStateView)
+    }
+    
+    func presentSafariVC(with url: URL){
+        let safariVC = SFSafariViewController(url: url)
+        safariVC.preferredControlTintColor = .systemGreen
+        present(safariVC, animated: true)
     }
 }
 

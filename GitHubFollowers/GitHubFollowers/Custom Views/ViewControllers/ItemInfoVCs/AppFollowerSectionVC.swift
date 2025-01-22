@@ -21,7 +21,7 @@ class AppFollowerSectionVC: AppItemInfoVC{
     }
     
     override func actionButtonTapped() {
-        delegate?.didTapFollowers(for: user)
+        delegate?.didTapGetFollowers(for: user)
     }
 }
 
