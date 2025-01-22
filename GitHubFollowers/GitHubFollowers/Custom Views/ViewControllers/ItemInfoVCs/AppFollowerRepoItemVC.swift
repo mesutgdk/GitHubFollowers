@@ -20,7 +20,7 @@ class AppFollowerRepoItemVC: AppItemInfoVC{
         actionButton.set(backgroundColor: .systemPurple, title: "GitHub Profile")
     }
     
-    func actionButtonTapped() {
-        delegate?.didTapFollowers()
+    override func actionButtonTapped() {
+        delegate?.didTapGitHubProfile(for: user)
     }
 }
