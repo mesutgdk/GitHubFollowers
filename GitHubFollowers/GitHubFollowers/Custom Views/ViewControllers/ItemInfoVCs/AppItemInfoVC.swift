@@ -30,6 +30,7 @@ class AppItemInfoVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        configureActionButton()
         configureStackView()
         layout()
         

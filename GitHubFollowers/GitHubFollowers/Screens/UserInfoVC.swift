@@ -142,6 +142,7 @@ final class UserInfoVC: UIViewController {
 extension UserInfoVC: UserInfoVCDelegate {
     func didTapGitHubProfile() {
         // to do : show safari view controller
+        print("my button is tapped")
     }
     
     func didTapFollowers() {
