@@ -26,6 +26,7 @@
 		637CE6DF2B9B36DC00077953 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637CE6DE2B9B36DC00077953 /* TabViewController.swift */; };
 		637CE6E32B9B377E00077953 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637CE6E22B9B377E00077953 /* SearchVC.swift */; };
 		637CE6E52B9B37A400077953 /* FavoriteListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637CE6E42B9B37A400077953 /* FavoriteListVC.swift */; };
+		638680742D42607000B08ED3 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638680732D42607000B08ED3 /* PersistenceManager.swift */; };
 		63A6AF552BBD801900479BC0 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A6AF542BBD801900479BC0 /* NetworkManager.swift */; };
 		63B5E87F2BB1C16500C9A9BC /* CustomAlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B5E87E2BB1C16500C9A9BC /* CustomAlertVC.swift */; };
 		63B6AF8D2C00AFF800146D7E /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B6AF8C2C00AFF800146D7E /* UIHelper.swift */; };
@@ -83,6 +84,7 @@
 		637CE6DE2B9B36DC00077953 /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 		637CE6E22B9B377E00077953 /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
 		637CE6E42B9B37A400077953 /* FavoriteListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListVC.swift; sourceTree = "<group>"; };
+		638680732D42607000B08ED3 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		63A6AF542BBD801900479BC0 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		63B5E87E2BB1C16500C9A9BC /* CustomAlertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertVC.swift; sourceTree = "<group>"; };
 		63B6AF8C2C00AFF800146D7E /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 			isa = PBXGroup;
 			children = (
 				63A6AF542BBD801900479BC0 /* NetworkManager.swift */,
+				638680732D42607000B08ED3 /* PersistenceManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -478,6 +481,7 @@
 				63CA0DC12B99EA2C00A5285A /* CustomButton.swift in Sources */,
 				634CC6992BBE7C2B00374F87 /* ErrorMessage.swift in Sources */,
 				6359ED092BBC39A400DB8C5E /* User.swift in Sources */,
+				638680742D42607000B08ED3 /* PersistenceManager.swift in Sources */,
 				6324284C2C37CBE2003FA7DC /* CustomEmtyStateView.swift in Sources */,
 				634CC69E2BBECEA900374F87 /* FollowerCell.swift in Sources */,
 				633633A82BAF11B0008BE50D /* CustomTitleLabel.swift in Sources */,

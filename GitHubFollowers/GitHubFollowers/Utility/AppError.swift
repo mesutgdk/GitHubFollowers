@@ -13,6 +13,7 @@ enum AppError: LocalizedError {
     case invalidResponce
     case invalidData
     case decodingError
+    case unableToFavorite
     
     var errorDescription: String {
         switch self {
@@ -26,6 +27,8 @@ enum AppError: LocalizedError {
             return "The data received from the server was invalid, Please try again. "
         case .decodingError:
             return "The data can not be decoded, Please try again. "
+        case .unableToFavorite:
+            return "There was a problem favoriting the user. Please try again."
         }
     }
 }

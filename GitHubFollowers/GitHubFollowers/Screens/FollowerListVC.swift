@@ -54,6 +54,9 @@ final class FollowerListVC: UIViewController {
         view.backgroundColor = .systemBackground
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.hidesSearchBarWhenScrolling = false // sayfa açıldığında searchbarı otomatik açık gösteriyor
+        
+        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTapped))
+        navigationItem.rightBarButtonItem = addButton
     }
     
     private func layout(){
@@ -139,6 +142,9 @@ final class FollowerListVC: UIViewController {
         snapshot.appendItems(followers)
         DispatchQueue.main.async {self.dataSource.apply(snapshot, animatingDifferences: true)}
         
+    }
+    @objc func addButtonTapped(){
+        print("AddButton Tapped")
     }
 }
 
