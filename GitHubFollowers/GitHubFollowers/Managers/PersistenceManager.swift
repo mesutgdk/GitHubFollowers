@@ -17,7 +17,7 @@ enum PersistenceManager {
     // MARK: - takeing favorites from defaults
 
     static func retriveFavorites(completed: @escaping (Result<[Follower], AppError>)-> Void){
-        guard let favoritesData = defaults.data(forKey: Keys.favorites) as? Data else {
+        guard let favoritesData = defaults.object(forKey: Keys.favorites) as? Data else {
             completed(.success([]))
             return
         }
@@ -40,12 +40,13 @@ enum PersistenceManager {
         do{
             let encoder = JSONEncoder()
             let encodedFavorite = try encoder.encode(favorites)
+            
+            defaults.set(encodedFavorite, forKey: Keys.favorites)
+            return nil
         }
         catch {
             return AppError.unableToFavorite
         }
-        
-        return nil
     }
 
 }
