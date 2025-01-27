@@ -7,11 +7,44 @@
 
 import Foundation
 
+enum PersistenceActionType {
+    case add, remove
+}
+
 enum PersistenceManager {
     static private let defaults = UserDefaults.standard
     
     enum Keys{
         static let favorites = "favorites"
+    }
+    
+    static func updateWith(favorite: Follower,
+                           actionType: PersistenceActionType,
+                           completed: @escaping(AppError?)-> Void) {
+        retriveFavorites { result in
+            switch result {
+            case .success(let favorites):
+                var retrievedFollowers = favorites
+                
+                switch actionType {
+                case .add:
+                    guard !retrievedFollowers.contains(favorite) else {
+                        completed(.allreadyFavorited)
+                        return
+                    }
+                    
+                    retrievedFollowers.append(favorite)
+                    
+                case .remove:
+                    retrievedFollowers.removeAll {$0.login == favorite.login}
+                }
+                
+                completed(save(favorites: favorites))
+                
+            case .failure(let error):
+                completed(error)
+            }
+        }
     }
     
     // MARK: - takeing favorites from defaults
