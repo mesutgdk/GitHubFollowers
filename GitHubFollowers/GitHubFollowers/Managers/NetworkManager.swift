@@ -56,7 +56,11 @@ final class NetworkManager{
   
     // MARK: -
     
-    func getUserInfo(for username: String, comletion: @escaping (Result<User,AppError>)-> Void){
+    func getUserInfo(for username: String?, comletion: @escaping (Result<User,AppError>)-> Void){
+        
+        guard let username = username else {
+             return
+        }
         let endpoint = baseURL + "\(username)"
         
         guard let url = endpoint.asUrl else {

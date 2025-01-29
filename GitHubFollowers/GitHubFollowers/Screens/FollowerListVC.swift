@@ -144,7 +144,21 @@ final class FollowerListVC: UIViewController {
         
     }
     @objc func addButtonTapped(){
-        print("AddButton Tapped")
+        showLoadingView()
+
+        NetworkManager.shared.getUserInfo(for: userName) { [weak self] result in
+            
+            guard let self = self else {return}
+            
+            dismissLoadingScreen()
+            
+            switch result {
+            case .success(let user):
+                break
+            case .failure(let error):
+                break
+            }
+        }
     }
 }
 
