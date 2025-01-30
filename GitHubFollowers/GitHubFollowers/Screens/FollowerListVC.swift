@@ -145,7 +145,6 @@ final class FollowerListVC: UIViewController {
     }
     @objc func addButtonTapped(){
         showLoadingView()
-
         NetworkManager.shared.getUserInfo(for: userName) { [weak self] result in
             
             guard let self = self else {return}
@@ -154,9 +153,32 @@ final class FollowerListVC: UIViewController {
             
             switch result {
             case .success(let user):
-                break
+                
+                let favoriteUser = Follower(login: user.login, avatarUrl: user.avatarUrl)
+                
+                PersistenceManager.updateWith(favorite: favoriteUser, actionType: .add) { [weak self] error in
+                    guard let self = self else {return}
+                    
+                    guard let error = error else {
+                        presentCustomAlertOnMainThread(title: "Success!", message: "You have successfully added this user🎉", buttonTitle: "Welldone")
+                        
+                        return
+                    }
+                    self.presentCustomAlertOnMainThread(title: "Something went wrong", message: error.errorDescription, buttonTitle: "Ok")
+                    
+                }
+                
             case .failure(let error):
-                break
+                self.presentCustomAlertOnMainThread(title: "Something went wrong", message: error.errorDescription, buttonTitle: "Ok")
+            }
+            
+            PersistenceManager.retriveFavorites { [weak self] result in
+                switch result {
+                case .success(let users):
+                    print(users.count)
+                case .failure(let error):
+                    print("Error: \(error)")
+                }
             }
         }
     }
