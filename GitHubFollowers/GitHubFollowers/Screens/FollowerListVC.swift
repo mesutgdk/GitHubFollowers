@@ -175,7 +175,7 @@ final class FollowerListVC: UIViewController {
             PersistenceManager.retriveFavorites { [weak self] result in
                 switch result {
                 case .success(let users):
-                    print(users.count)
+                    print(users)
                 case .failure(let error):
                     print("Error: \(error)")
                 }

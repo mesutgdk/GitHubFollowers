@@ -210,36 +210,6 @@
             endingLineNumber = "175"
             landmarkName = "addButtonTapped()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "7E993862-509E-485C-83A9-01C20E8C3606 - 3a5e0cafbc6c6d6e"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Result&lt;GitHubFollowers.User, GitHubFollowers.AppError&gt;) -&gt; () in GitHubFollowers.FollowerListVC.addButtonTapped() -&gt; ()"
-                  moduleName = "GitHubFollowers.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mesutgdk/Desktop/GitHubFollowers/GitHubFollowers/GitHubFollowers/Screens/FollowerListVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "175"
-                  endingLineNumber = "175">
-               </Location>
-               <Location
-                  uuid = "7E993862-509E-485C-83A9-01C20E8C3606 - 1039a579791cdc0d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #2 (Swift.Result&lt;Swift.Array&lt;GitHubFollowers.Follower&gt;, GitHubFollowers.AppError&gt;) -&gt; () in closure #1 (Swift.Result&lt;GitHubFollowers.User, GitHubFollowers.AppError&gt;) -&gt; () in GitHubFollowers.FollowerListVC.addButtonTapped() -&gt; ()"
-                  moduleName = "GitHubFollowers.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mesutgdk/Desktop/GitHubFollowers/GitHubFollowers/GitHubFollowers/Screens/FollowerListVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "175"
-                  endingLineNumber = "175">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
