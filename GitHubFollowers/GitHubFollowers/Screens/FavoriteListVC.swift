@@ -7,13 +7,23 @@
 
 import UIKit
 
-class FavoriteListVC: UIViewController {
+final class FavoriteListVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setup()
         layout()
+    
+        PersistenceManager.retriveFavorites { [weak self] result in
+            switch result {
+            case .success(let favorites):
+                print(favorites)
+            case .failure(let error):
+                print("Error: \(error)")
+            }
+        }
+        
     }
     
     private func setup(){

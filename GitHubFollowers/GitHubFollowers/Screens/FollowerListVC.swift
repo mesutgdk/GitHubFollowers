@@ -171,15 +171,6 @@ final class FollowerListVC: UIViewController {
             case .failure(let error):
                 self.presentCustomAlertOnMainThread(title: "Something went wrong", message: error.errorDescription, buttonTitle: "Ok")
             }
-            
-            PersistenceManager.retriveFavorites { [weak self] result in
-                switch result {
-                case .success(let users):
-                    print(users)
-                case .failure(let error):
-                    print("Error: \(error)")
-                }
-            }
         }
     }
 }
