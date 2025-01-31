@@ -8,15 +8,40 @@
 import UIKit
 
 class FavoriteTVCell: UITableViewCell {
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    
+    static let cellIdentifier   = String(describing: FavoriteTVCell.self)
+    
+    let avatarImageView         = CustomImageView(frame: .zero)
+    let usernameLabel           = CustomTitleLabel(textAlignment: .center, fontSize: 26)
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        setup()
+        layout()
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
-
+    
+    private func setup() {
+        addSubviews(avatarImageView, usernameLabel)
+        
+        accessoryType             = .disclosureIndicator
+        
+    }
+    
+    private func layout() {
+        let padding:CGFloat       = 12
+        
+        NSLayoutConstraint.activate([
+            avatarImageView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            avatarImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: padding),
+            avatarImageView.heightAnchor.constraint(equalToConstant: 60),
+            avatarImageView.widthAnchor.constraint(equalTo: avatarImageView.heightAnchor)
+        ])
+        
+    }
+    
 }
