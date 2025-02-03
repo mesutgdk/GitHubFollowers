@@ -12,7 +12,7 @@ class FavoriteTVCell: UITableViewCell {
     static let cellIdentifier   = String(describing: FavoriteTVCell.self)
     
     let avatarImageView         = CustomImageView(frame: .zero)
-    let usernameLabel           = CustomTitleLabel(textAlignment: .center, fontSize: 26)
+    let usernameLabel           = CustomTitleLabel(textAlignment: .left, fontSize: 26)
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

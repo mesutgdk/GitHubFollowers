@@ -28,8 +28,8 @@ final class CustomTitleLabel: UILabel {
     
     private func configure(){
         textColor = .label
-        font = UIFont.preferredFont(forTextStyle: .body)
-        adjustsFontSizeToFitWidth = true
+//        font = UIFont.preferredFont(forTextStyle: .body)
+//        adjustsFontSizeToFitWidth = true
         minimumScaleFactor = 0.9
         lineBreakMode = .byTruncatingTail
         translatesAutoresizingMaskIntoContraints(false)
