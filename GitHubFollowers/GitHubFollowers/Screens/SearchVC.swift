@@ -42,6 +42,7 @@ final class SearchVC: UIViewController {
         
         createDismissKeyboardTapGesture()
         createSearchButtonAction()
+        setupKeyboardHiding()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -130,6 +131,48 @@ final class SearchVC: UIViewController {
             self.errorMessageLabel.isHidden = true
         }
     }
+}
+
+// MARK: - recognizeTapGester - Keyboard appear and Disappear - Pushing screen up
+extension SearchVC{
+    
+    private func setupKeyboardHiding(){
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(sender: NSNotification) { // keyboard bilgilerini burdan alıyoruz
+        //        view.frame.origin.y = view.frame.origin.y - 200 // it push all view 200 pxl up
+        guard let userInfo = sender.userInfo,
+              let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue,
+              let currentTextField = UIResponder.currentFirst() as? UITextField else {return}
+        
+//                print("foo - userInfo \(userInfo)")
+//                print("foo - keyboardFrame \(keyboardFrame)")
+//                print("foo - currenttextField \(currentTextField)")
+//
+        // check if the top of the keyboard is above the bottom of the currently focused textbox
+        let keyboardTopY = keyboardFrame.cgRectValue.origin.y
+        // let textFieldBottomY = currentTextField.frame.origin.y + currentTextField.frame.size.height
+        
+        // textfield kendi koordinat sisteminde dönüyor, çalışmıyor, yukarıdaki yerine parent view koordinat sistemine çevireceğiz
+        let convertedTextFieldFrame = view.convert(currentTextField.frame, from: currentTextField.superview)
+        
+        let textFieldBottomY = (convertedTextFieldFrame.origin.y + convertedTextFieldFrame.size.height)
+        
+        // if textField bottom is below keyboard bottom - push the frame up
+        if textFieldBottomY > keyboardTopY {
+            //adjust view up
+            let textBoxY = convertedTextFieldFrame.origin.y
+            let newFrameY = (textBoxY - keyboardTopY/2) * -1
+            view.frame.origin.y = newFrameY
+        }
+        
+    }
+    @objc func keyboardWillHide(notification: NSNotification) {
+        view.frame.origin.y = 0
+    }
+
 }
 
 extension SearchVC: UITextFieldDelegate{
