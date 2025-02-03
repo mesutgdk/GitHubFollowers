@@ -23,7 +23,7 @@
 		6359ED072BBC394300DB8C5E /* Follower.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6359ED062BBC394300DB8C5E /* Follower.swift */; };
 		6359ED092BBC39A400DB8C5E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6359ED082BBC39A400DB8C5E /* User.swift */; };
 		63606BC02D2BB4D40094113F /* AppFollowerSectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63606BBF2D2BB4D40094113F /* AppFollowerSectionVC.swift */; };
-		637CE6DF2B9B36DC00077953 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637CE6DE2B9B36DC00077953 /* TabViewController.swift */; };
+		637CE6DF2B9B36DC00077953 /* AppTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637CE6DE2B9B36DC00077953 /* AppTabBarViewController.swift */; };
 		637CE6E32B9B377E00077953 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637CE6E22B9B377E00077953 /* SearchVC.swift */; };
 		637CE6E52B9B37A400077953 /* FavoriteListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637CE6E42B9B37A400077953 /* FavoriteListVC.swift */; };
 		638680742D42607000B08ED3 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638680732D42607000B08ED3 /* PersistenceManager.swift */; };
@@ -82,7 +82,7 @@
 		6359ED062BBC394300DB8C5E /* Follower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Follower.swift; sourceTree = "<group>"; };
 		6359ED082BBC39A400DB8C5E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		63606BBF2D2BB4D40094113F /* AppFollowerSectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFollowerSectionVC.swift; sourceTree = "<group>"; };
-		637CE6DE2B9B36DC00077953 /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
+		637CE6DE2B9B36DC00077953 /* AppTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabBarViewController.swift; sourceTree = "<group>"; };
 		637CE6E22B9B377E00077953 /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
 		637CE6E42B9B37A400077953 /* FavoriteListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListVC.swift; sourceTree = "<group>"; };
 		638680732D42607000B08ED3 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
@@ -248,9 +248,18 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
+		63C19FFA2D50B3FC00615454 /* TabBars */ = {
+			isa = PBXGroup;
+			children = (
+				637CE6DE2B9B36DC00077953 /* AppTabBarViewController.swift */,
+			);
+			path = TabBars;
+			sourceTree = "<group>";
+		};
 		63CA0DBD2B99E9BA00A5285A /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
+				63C19FFA2D50B3FC00615454 /* TabBars */,
 				6324284A2C37C6BC003FA7DC /* Labels */,
 				632428492C37C50F003FA7DC /* ViewControllers */,
 				632428472C37C4E7003FA7DC /* ImageViews */,
@@ -299,7 +308,6 @@
 				634CC6972BBE7B9400374F87 /* Utility */,
 				63A6AF532BBD7FF300479BC0 /* Managers */,
 				6359ED052BBC392B00DB8C5E /* Model */,
-				63F0867A2B975F760083780D /* Core */,
 				63F0867B2B975FB70083780D /* Extension */,
 				63CA0DBD2B99E9BA00A5285A /* Custom Views */,
 				63D6B6472BB6D7890091841F /* Screens */,
@@ -324,14 +332,6 @@
 				63DBC9712B9605EC002D97C4 /* GitHubFollowersUITestsLaunchTests.swift */,
 			);
 			path = GitHubFollowersUITests;
-			sourceTree = "<group>";
-		};
-		63F0867A2B975F760083780D /* Core */ = {
-			isa = PBXGroup;
-			children = (
-				637CE6DE2B9B36DC00077953 /* TabViewController.swift */,
-			);
-			path = Core;
 			sourceTree = "<group>";
 		};
 		63F0867B2B975FB70083780D /* Extension */ = {
@@ -493,7 +493,7 @@
 				635913402C771A0500F3E86E /* AppUserInfoHeaderVC.swift in Sources */,
 				634CC6A02BBECF9F00374F87 /* CustomImageView.swift in Sources */,
 				634705C02D22DEFF00E19C6D /* AppFollowerRepoItemVC.swift in Sources */,
-				637CE6DF2B9B36DC00077953 /* TabViewController.swift in Sources */,
+				637CE6DF2B9B36DC00077953 /* AppTabBarViewController.swift in Sources */,
 				63CE3E852BB2F29C00AC91A8 /* CustomBodyLabel.swift in Sources */,
 				637CE6E52B9B37A400077953 /* FavoriteListVC.swift in Sources */,
 				63A6AF552BBD801900479BC0 /* NetworkManager.swift in Sources */,
@@ -682,7 +682,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = B34M97ZY6W;
+				DEVELOPMENT_TEAM = 32RLP65M49;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GitHubFollowers/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -710,7 +710,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = B34M97ZY6W;
+				DEVELOPMENT_TEAM = 32RLP65M49;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GitHubFollowers/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

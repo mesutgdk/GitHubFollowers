@@ -15,7 +15,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         let window = UIWindow(windowScene: windowScene)
-        let tabVC = TabViewController()
+        let tabVC = AppTabBarViewController()
         
         configureNavigationBar()
         
@@ -26,7 +26,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func configureNavigationBar(){
         UINavigationBar.appearance().tintColor = .systemGreen
-        UINavigationBar.appearance().prefersLargeTitles = true
+//        UINavigationBar.appearance().prefersLargeTitles = true
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {}
