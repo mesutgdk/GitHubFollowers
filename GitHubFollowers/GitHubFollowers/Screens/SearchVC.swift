@@ -89,12 +89,7 @@ final class SearchVC: UIViewController {
             searchButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
-    // MARK: - taping outside of keyboard disappears the keyboard
-    private func createDismissKeyboardTapGesture(){
-        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
-        view.addGestureRecognizer(tap)
-    }
-    
+
     // MARK: - Actions- searchbutton action creation
     private func createSearchButtonAction(){
         let action = UIAction{[weak self] _ in
@@ -133,9 +128,14 @@ final class SearchVC: UIViewController {
     }
 }
 
-// MARK: - recognizeTapGester - Keyboard appear and Disappear - Pushing screen up
 extension SearchVC{
-    
+    // MARK: - taping outside of keyboard disappears the keyboard
+    private func createDismissKeyboardTapGesture(){
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
+        view.addGestureRecognizer(tap)
+    }
+
+    // MARK: - recognizeTapGester - Keyboard appear and Disappear - Pushing screen up
     private func setupKeyboardHiding(){
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -172,7 +172,6 @@ extension SearchVC{
     @objc func keyboardWillHide(notification: NSNotification) {
         view.frame.origin.y = 0
     }
-
 }
 
 extension SearchVC: UITextFieldDelegate{
