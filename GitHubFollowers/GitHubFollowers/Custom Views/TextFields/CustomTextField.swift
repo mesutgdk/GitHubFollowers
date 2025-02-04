@@ -20,7 +20,7 @@ final class CustomTextField: UITextField {
     
     private func configure(){
         translatesAutoresizingMaskIntoContraints(false)
-        addCornerRadiusAndShadow(self, cornerRadius: 10, borderWith: 1, borderColor: .systemGray4, hasShadow: true)
+        addCornerRadiusAndShadow(self, cornerRadius: 10, borderWith: 2, borderColor: .systemGray4, hasShadow: true)
         
         textColor                   = .label
         tintColor                   = .label
@@ -32,6 +32,7 @@ final class CustomTextField: UITextField {
         backgroundColor             = .tertiarySystemBackground
         autocorrectionType          = .no
         returnKeyType               = .go
+        clearButtonMode             = .whileEditing     // while writing, little "x" button appears on right side of the textfield to delete all
         placeholder                 = "Enter an Username"
     }
 }

@@ -12,7 +12,7 @@ final class SearchVC: UIViewController {
     private let logoImageView       = {
         let logoImageView = UIImageView()
         logoImageView.translatesAutoresizingMaskIntoContraints(false)
-        logoImageView.image = UIImage(named: "gh-logo")
+        logoImageView.image = UIImage(named: Images.ghLogo)
         return logoImageView
     }()
     
@@ -99,18 +99,22 @@ final class SearchVC: UIViewController {
     }
     
     private func addActionToSearchButton(){
-        let followerVC = FollowerListVC()
         errorMessageLabel.isHidden = true
         
         guard !userNameTextField.text!.isEmpty else { // textField un-empty guard statement
-//            print("TextField is Empty")
             presentCustomAlertOnMainThread(title: "Empty Username", message: "Please enter a username. We need to know who to look for 😁", buttonTitle: "Ok")
             showErrorMessage()
             return
         }
         
-        followerVC.userName = userNameTextField.text!
-        followerVC.title    = userNameTextField.text!
+        // while pushing screen, action button and keyboard mix bug occurs, getting rid of this with both way
+//        userNameTextField.resignFirstResponder()
+        view.endEditing(true)
+        
+        let userName = userNameTextField.text!
+        
+        let followerVC = FollowerListVC(username: userName)
+
         //        print(followerVC.userName)
         
         navigationController?.isNavigationBarHidden = false
@@ -177,7 +181,7 @@ extension SearchVC{
 extension SearchVC: UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.endEditing(true) // to disappear the keyboard after pressing go
-        print("Go button pressed")
+//        print("Go button pressed")
         return true
     }
 }

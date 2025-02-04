@@ -32,6 +32,16 @@ final class FollowerListVC: UIViewController {
     
     var isSearching         : Bool          = false
     
+    init(username:String){
+        super.init(nibName: nil, bundle: nil)
+        self.userName   = username
+        title           = username
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -55,8 +65,12 @@ final class FollowerListVC: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.hidesSearchBarWhenScrolling = false // sayfa açıldığında searchbarı otomatik açık gösteriyor
         
+        // To add favorite button
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTapped))
-        navigationItem.rightBarButtonItem = addButton
+        // To see profile button
+        let profileButton = UIBarButtonItem(image: UIImage(systemName: SFSymbols.profile), style: .plain, target: self, action: #selector(eyesButtonTapped))
+        navigationItem.rightBarButtonItems = [addButton, profileButton]
+        
     }
     
     private func layout(){
@@ -172,6 +186,31 @@ final class FollowerListVC: UIViewController {
                 self.presentCustomAlertOnMainThread(title: "Something went wrong", message: error.errorDescription, buttonTitle: "Ok")
             }
         }
+    }
+    @objc func eyesButtonTapped(){
+        showLoadingView()
+        NetworkManager.shared.getUserInfo(for: userName) { [weak self] result in
+            
+            guard let self = self else {return}
+            
+            dismissLoadingScreen()
+            
+            switch result {
+            case .success(let user):
+                                
+                guard let url = URL(string: user.htmlUrl) else {
+                    presentCustomAlertOnMainThread(title: "Invalid URL", message: "Url attached to this user is invalid", buttonTitle: "Ok")
+                    return
+                }
+                
+                presentSafariVC(with: url)
+              
+                
+            case .failure(let error):
+                self.presentCustomAlertOnMainThread(title: "Something went wrong", message: error.errorDescription, buttonTitle: "Ok")
+            }
+        }
+
     }
 }
 

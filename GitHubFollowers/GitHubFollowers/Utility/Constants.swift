@@ -14,6 +14,11 @@ enum SFSymbols {
     static let gists        = "text.alignleft"
     static let followers    = "heart"
     static let following    = "person.2"
+    static let profile         = "person.fill"
+}
+
+enum Images{
+    static let ghLogo    = "gh-logo"
 }
 
 enum ScreenSize {
