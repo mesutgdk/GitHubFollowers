@@ -16,3 +16,4 @@ iOS application that interfaces with GitHub's API. No Storyboard, NSCache, Netwo
 - Delegates/Protocols
 - Safari Services
 
+ - Additionally,  incorporating an autolayout feature that dynamically adjusts the interface based on the keyboard's visibility. When the keyboard appears on the screen, the app intelligently detects its dimensions and automatically adapts the layout to ensure optimal usability.
