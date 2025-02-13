@@ -22,7 +22,7 @@ final class CustomButton: UIButton{
         self.init(frame: .zero)
         self.backgroundColor = backgroundColor
         self.setTitle(title, for: .normal)
-        configure()
+//        configure()   //    we call self.init, it calls configure, no need to recall
     }
     
     private func configure(){
