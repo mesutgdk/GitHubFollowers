@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class CustomImageView: UIImageView {
+final class CustomAvatarImageView: UIImageView {
     
     let cache = NetworkManager.shared.cache
     

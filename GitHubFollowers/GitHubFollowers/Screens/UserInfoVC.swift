@@ -125,7 +125,7 @@ final class UserInfoVC: UIViewController {
             self.addVC(childVC: follewerVC, to: self.itemViewTwo)
             self.addVC(childVC: AppUserInfoHeaderVC(user: user), to: self.headerView)
             // dateconverter used to make string to date to string
-            self.dateLabel.text = "GitHub Since " + user.createdAt.convertToDisplayDate()
+            self.dateLabel.text = "GitHub Since " + user.createdAt.convertDateToMouthYearFormat()        //.convertToDisplayDate()
         }
     }
     

@@ -19,11 +19,11 @@ final class CustomBodyLabel: UILabel {
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(textAlignment: NSTextAlignment, numberOfLines: Int) {
-        super.init(frame: .zero)
+    convenience init(textAlignment: NSTextAlignment, numberOfLines: Int) {
+        self.init(frame: .zero)
         self.textAlignment = textAlignment
         self.numberOfLines = numberOfLines
-        configure()
+        
     }
     
     private func configure(){

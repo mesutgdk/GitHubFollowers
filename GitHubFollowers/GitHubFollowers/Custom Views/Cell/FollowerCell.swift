@@ -10,7 +10,7 @@ import UIKit
 final class FollowerCell: UICollectionViewCell {
     static let cellIdentifier = String(describing: FollowerCell.self)
     
-    let avatarImageView = CustomImageView(frame: .zero)
+    let avatarImageView = CustomAvatarImageView(frame: .zero)
     let usernameLabel = CustomTitleLabel(textAlignment: .center, fontSize: 16)
     
     override init(frame: CGRect) {

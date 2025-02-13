@@ -53,13 +53,13 @@ final class NetworkManager{
         }
         task.resume()
     }
-  
+    
     // MARK: -
     
     func getUserInfo(for username: String?, comletion: @escaping (Result<User,AppError>)-> Void){
         
         guard let username = username else {
-             return
+            return
         }
         let endpoint = baseURL + "\(username)"
         
@@ -83,17 +83,53 @@ final class NetworkManager{
                 return
             }
             do{
-                let decoder = JSONDecoder()
-                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                let decoder                         = JSONDecoder()
+                decoder.keyDecodingStrategy         = .convertFromSnakeCase
+                decoder.dateDecodingStrategy        = .iso8601
                 
-                let userInfo = try decoder.decode(User.self, from: data)
+                let userInfo                        = try decoder.decode(User.self, from: data)
                 
-//                print(userInfo)
+                //                print(userInfo)
                 
                 comletion(.success(userInfo)) // işlem başarılı, decode ettiğimizi yukarı atıyoruz
             } catch{
                 comletion(.failure(.decodingError))
             }
+        }
+        task.resume()
+    }
+    
+    // MARK: - DownloadManager
+    
+    func downloadImage(from urlString: String, completed: @escaping (UIImage?) -> Void){
+        let cacheKey = NSString(string: urlString)
+        
+        if let image = cache.object(forKey: cacheKey){  // pulling out image if cached
+            completed(image)                            // if it is cached, sent it back
+            return
+        }
+        
+        guard let url = URL(string: urlString) else {
+            completed(nil)
+            return
+        }
+        
+        let task = URLSession.shared.dataTask(with: url) { [weak self] data, responce, error in
+            
+            guard let self = self, error == nil else {
+                completed(nil)
+                return
+            }
+            
+            guard let responce = responce as? HTTPURLResponse, responce.statusCode == 200 else { return }
+            
+            guard let data = data else { return }
+            
+            guard let image = UIImage(data: data) else { return }
+            
+            self.cache.setObject(image, forKey: cacheKey) // caching image if not cached
+            
+            completed(image)
         }
         task.resume()
     }
@@ -129,7 +165,7 @@ final class NetworkManager{
             throw AppError.cantHandleRequest
         }
     }
-
+    
     // MARK: - Old networkingway without result type
     // before swift 5, the old way with network, maybe it helps refactoring at some companies
     func getFollowersByOldWayWithoutResultType(for username: String, page: Int, comletion: @escaping ([Follower]?, ErrorMessage?)-> Void){
