@@ -9,16 +9,7 @@ import UIKit
 
 class CustomAlertVC: UIViewController {
     
-    private let containerView   = {
-        let containerView = UIView()
-        containerView.backgroundColor = .systemBackground
-        containerView.addCornerRadiusAndShadow(containerView,
-                                               cornerRadius: 16,
-                                               borderWith: 2,
-                                               borderColor: .white,
-                                               hasShadow: false)
-        return containerView
-    } ()
+    private let containerView   = CustomAlertConteinerView()
     
     private let titleLabel      = CustomTitleLabel(textAlignment: .center, fontSize: 20)
     private let messageLabel    = CustomBodyLabel(textAlignment: .center, numberOfLines: 4)
