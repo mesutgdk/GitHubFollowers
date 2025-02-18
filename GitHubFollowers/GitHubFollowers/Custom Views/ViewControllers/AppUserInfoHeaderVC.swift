@@ -8,7 +8,7 @@
 import UIKit
 
 final class AppUserInfoHeaderVC: UIViewController {
-
+    
     let avatarImageView     = CustomAvatarImageView(frame: .zero)
     let usernameLabel       = CustomTitleLabel(textAlignment: .left, fontSize: 34)
     let nameLabel           = CustomSecondaryTitleLabel(fontSize: 18)
@@ -43,7 +43,14 @@ final class AppUserInfoHeaderVC: UIViewController {
             presentCustomAlertOnMainThread(title: "No User!", message: "Pls try it again.", buttonTitle: "Ok")
             return
         }
-        avatarImageView.downloadImage(from: user.avatarUrl)
+        
+        NetworkManager.shared.downloadImage(from: user.avatarUrl) { [weak self] image in
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                self.avatarImageView.image = image
+            }
+        }
+        
         
         usernameLabel.text              = user.login
         nameLabel.text                  = user.name ?? ""

@@ -17,7 +17,7 @@ final class NetworkManager{
     
     private init() {}
     
-    // network call for followers
+    // MARK: - network call for followers
     func getFollowers(for username: String, page: Int, comletion: @escaping (Result<[Follower],AppError>)-> Void){
         let endpoint = baseURL + "\(username)/followers?per_page=100&page=\(page)" // from developer.github.com
         
@@ -54,7 +54,7 @@ final class NetworkManager{
         task.resume()
     }
     
-    // MARK: -
+    // MARK: - network call for the user
     
     func getUserInfo(for username: String?, comletion: @escaping (Result<User,AppError>)-> Void){
         
@@ -99,7 +99,7 @@ final class NetworkManager{
         task.resume()
     }
     
-    // MARK: - DownloadManager
+    // MARK: - DownloadManager - download image if it is not cached
     
     func downloadImage(from urlString: String, completed: @escaping (UIImage?) -> Void){
         let cacheKey = NSString(string: urlString)
@@ -116,16 +116,16 @@ final class NetworkManager{
         
         let task = URLSession.shared.dataTask(with: url) { [weak self] data, responce, error in
             
-            guard let self = self, error == nil else {
+            guard let self = self,
+                  error == nil,
+            let responce = responce as? HTTPURLResponse,
+            responce.statusCode == 200,
+            let data = data,
+            let image = UIImage(data: data)
+            else {
                 completed(nil)
                 return
             }
-            
-            guard let responce = responce as? HTTPURLResponse, responce.statusCode == 200 else { return }
-            
-            guard let data = data else { return }
-            
-            guard let image = UIImage(data: data) else { return }
             
             self.cache.setObject(image, forKey: cacheKey) // caching image if not cached
             
