@@ -33,7 +33,7 @@ final class FollowerCell: UICollectionViewCell {
             }
         }
     }
-    
+
     private func setup(){
         addSubviews(avatarImageView, usernameLabel)
     }

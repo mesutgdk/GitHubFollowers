@@ -139,8 +139,6 @@ final class UserInfoVC: UIViewController {
     @objc func dismissVC(){
         dismiss(animated: true)
     }
-    
-    
 }
 // MARK: - UserInfoVCDelegate
 extension UserInfoVC: UserInfoVCDelegate {
