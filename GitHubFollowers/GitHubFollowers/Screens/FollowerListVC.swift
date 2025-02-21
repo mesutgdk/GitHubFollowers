@@ -68,7 +68,7 @@ final class FollowerListVC: UIViewController {
         // To add favorite button
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTapped))
         // To see profile button
-        let profileButton = UIBarButtonItem(image: UIImage(systemName: SFSymbols.profile), style: .plain, target: self, action: #selector(eyesButtonTapped))
+        let profileButton = UIBarButtonItem(image: SFSymbols.profile , style: .plain, target: self, action: #selector(eyesButtonTapped))
         navigationItem.rightBarButtonItems = [addButton, profileButton]
         
     }

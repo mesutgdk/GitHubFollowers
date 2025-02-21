@@ -12,7 +12,7 @@ final class SearchVC: UIViewController {
     private let logoImageView       = {
         let logoImageView = UIImageView()
         logoImageView.translatesAutoresizingMaskIntoContraints(false)
-        logoImageView.image = UIImage(named: Images.ghLogo)
+        logoImageView.image = Images.ghLogo
         return logoImageView
     }()
     
