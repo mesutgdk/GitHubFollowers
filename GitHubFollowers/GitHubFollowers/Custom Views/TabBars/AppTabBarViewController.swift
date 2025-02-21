@@ -29,7 +29,7 @@ final class AppTabBarViewController: UITabBarController{
         let nav1 = UINavigationController(rootViewController: searchVC)
         
         nav1.tabBarItem = UITabBarItem(title: "Search",
-                                       image: UIImage(systemName: "magnifyingglass"),
+                                       image: Images.searchBar,
                                        tag: 0)
         return nav1
     }
@@ -40,7 +40,7 @@ final class AppTabBarViewController: UITabBarController{
         
         let nav2 = UINavigationController(rootViewController: favoriteVC)
         nav2.tabBarItem = UITabBarItem(title: "Favorite",
-                                       image: UIImage(systemName: "star.fill"),
+                                       image: Images.favoriteBar,
                                        tag: 1)
         
         return nav2

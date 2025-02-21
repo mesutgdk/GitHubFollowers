@@ -9,7 +9,7 @@ import UIKit
 
 final class CustomAvatarImageView: UIImageView {
     
-    let placeHolderImage = UIImage(named: "avatar-placeholder")
+    let placeHolderImage = Images.placeholder
     
     override init(frame: CGRect) {
         super.init(frame: frame)
