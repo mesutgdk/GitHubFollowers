@@ -213,7 +213,7 @@ final class FollowerListVC: UIViewController {
 
     }
 }
-
+// MARK: - uicollectionviewdelegate
 extension FollowerListVC: UICollectionViewDelegate{
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         let offSetY             = scrollView.contentOffset.y
@@ -246,11 +246,13 @@ extension FollowerListVC: UICollectionViewDelegate{
         
     }
 }
-
+// MARK: - uisearchbardelegate
 extension FollowerListVC: UISearchResultsUpdating, UISearchBarDelegate {
     func updateSearchResults(for searchController: UISearchController) {
         guard let filterText = searchController.searchBar.text, !filterText.isEmpty else {
+            filteredFollowers.removeAll()
             updateData(on: followers)
+//            isSearching = false    bunu eklersen 'searchBarCancelButtonClicked' ve 'UISearchBarDelegate' ihtiyaç duymazsın
             return
         }
         
