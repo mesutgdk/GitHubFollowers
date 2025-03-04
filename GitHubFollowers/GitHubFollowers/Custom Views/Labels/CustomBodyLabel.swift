@@ -27,10 +27,12 @@ final class CustomBodyLabel: UILabel {
     }
     
     private func configure(){
-        textColor = .secondaryLabel
-        adjustsFontSizeToFitWidth = true
-        minimumScaleFactor = 0.75
-        lineBreakMode = .byWordWrapping
+        textColor                                   = .secondaryLabel
+        font                                        = UIFont.preferredFont(forTextStyle: .body)
+        adjustsFontForContentSizeCategory           = true
+        adjustsFontSizeToFitWidth                   = true
+        minimumScaleFactor                          = 0.75
+        lineBreakMode                               = .byWordWrapping
         translatesAutoresizingMaskIntoContraints(false)
     }
     

@@ -13,7 +13,7 @@ final class AppUserInfoHeaderVC: UIViewController {
     let usernameLabel       = CustomTitleLabel(textAlignment: .left, fontSize: 34)
     let nameLabel           = CustomSecondaryTitleLabel(fontSize: 18)
     let locationLabel       = CustomSecondaryTitleLabel(fontSize: 18)
-    let bioLabel            = CustomBodyLabel(textAlignment: .center, numberOfLines: 20)
+    let bioLabel            = CustomBodyLabel(textAlignment: .left, numberOfLines: 3)
     let locationImageView   = {
         let locationImageView = UIImageView()
         locationImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -72,7 +72,6 @@ final class AppUserInfoHeaderVC: UIViewController {
             bioLabel,
             locationLabel,
             locationImageView
-            
         )
     }
     
@@ -121,7 +120,7 @@ final class AppUserInfoHeaderVC: UIViewController {
             bioLabel.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: textImagePadding),
             bioLabel.leftAnchor.constraint(equalTo: avatarImageView.leftAnchor, constant: 5),
             bioLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -padding),
-            bioLabel.heightAnchor.constraint(equalToConstant: 20)
+            bioLabel.heightAnchor.constraint(equalToConstant: 90)
         ])
     }
     

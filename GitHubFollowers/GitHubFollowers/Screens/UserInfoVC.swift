@@ -7,10 +7,6 @@
 
 import UIKit
 
-protocol UserInfoVCDelegate:AnyObject{
-    func didTapGitHubProfile(for user: User)
-    func didTapGetFollowers(for user : User)
-}
 final class UserInfoVC: UIViewController {
     
     let headerView  = UIView()
@@ -59,7 +55,7 @@ final class UserInfoVC: UIViewController {
             headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
             headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
-            headerView.heightAnchor.constraint(equalToConstant: 180)
+            headerView.heightAnchor.constraint(equalToConstant: 210)
         ])
         
         NSLayoutConstraint.activate([
@@ -80,7 +76,7 @@ final class UserInfoVC: UIViewController {
             dateLabel.topAnchor.constraint(equalTo: itemViewTwo.bottomAnchor, constant: padding),
             dateLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
             dateLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
-            dateLabel.heightAnchor.constraint(equalToConstant: 18)
+            dateLabel.heightAnchor.constraint(equalToConstant: 50)
 
         ])
     }
@@ -141,7 +137,7 @@ final class UserInfoVC: UIViewController {
     }
 }
 // MARK: - UserInfoVCDelegate
-extension UserInfoVC: UserInfoVCDelegate {
+extension UserInfoVC: AppItemInfoVCDelegate {
     func didTapGitHubProfile(for user: User) {
         // to do : show safari view controller
 //        print("my button-Profile is tapped")
