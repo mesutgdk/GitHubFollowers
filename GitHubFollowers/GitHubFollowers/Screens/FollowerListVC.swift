@@ -17,20 +17,22 @@ final class FollowerListVC: UIViewController {
         case main
     }
     
-    var userName            : String?
+    var userName                : String?
     
-    var followers           : [Follower]    = []
-    var filteredFollowers   : [Follower]    = []
+    var followers               : [Follower]    = []
+    var filteredFollowers       : [Follower]    = []
     
-    var page                : Int           = 1
+    var page                    : Int           = 1
     
-    var hasMorePage         : Bool          = true
+    var hasMorePage             : Bool          = true
    
-    var collectionView      : UICollectionView!
+    var collectionView          : UICollectionView!
     
-    var dataSource          : UICollectionViewDiffableDataSource<Section, Follower>!
+    var dataSource              : UICollectionViewDiffableDataSource<Section, Follower>!
     
-    var isSearching         : Bool          = false
+    var isSearching             : Bool          = false
+    
+    var isLoadingMoreFollowers  : Bool           = false
     
     init(username:String){
         super.init(nibName: nil, bundle: nil)
@@ -106,13 +108,18 @@ final class FollowerListVC: UIViewController {
     private func getFollowers(userName: String?, page: Int){
         // show activity indicator while network call
         showLoadingView()
+        isLoadingMoreFollowers = true // it is the start of loading
         
         guard let userName = userName else {
+            isLoadingMoreFollowers = false
              return
         }
         
         NetworkManager.shared.getFollowers(for: userName, page: page) { [weak self] (result) in
-            guard let self = self else {return}
+            guard let self = self else {
+                self?.isLoadingMoreFollowers = false
+                return
+            }
             
             //            #warning("Call Dismiss")
             self.dismissLoadingScreen() // removing activty indicator
@@ -126,6 +133,7 @@ final class FollowerListVC: UIViewController {
                     DispatchQueue.main.async {
                         self.showEmptyStateView(with: message, in: self.view)
                     }
+                    self.isLoadingMoreFollowers = false
                     return
                 }
                 
@@ -136,6 +144,7 @@ final class FollowerListVC: UIViewController {
             case .failure(let error):
                 self.presentCustomAlertOnMainThread(title: "Bad News⛈️", message: error.errorDescription, buttonTitle: "Ok")
             }
+            isLoadingMoreFollowers = false  // no, it is ending-loading
         }
     }
 
@@ -181,7 +190,6 @@ final class FollowerListVC: UIViewController {
                     self.presentCustomAlertOnMainThread(title: "Something went wrong", message: error.errorDescription, buttonTitle: "Ok")
                     
                 }
-                
             case .failure(let error):
                 self.presentCustomAlertOnMainThread(title: "Something went wrong", message: error.errorDescription, buttonTitle: "Ok")
             }
@@ -192,7 +200,6 @@ final class FollowerListVC: UIViewController {
         NetworkManager.shared.getUserInfo(for: userName) { [weak self] result in
             
             guard let self = self else {return}
-            
             dismissLoadingScreen()
             
             switch result {
@@ -202,10 +209,8 @@ final class FollowerListVC: UIViewController {
                     presentCustomAlertOnMainThread(title: "Invalid URL", message: "Url attached to this user is invalid", buttonTitle: "Ok")
                     return
                 }
-                
                 presentSafariVC(with: url)
               
-                
             case .failure(let error):
                 self.presentCustomAlertOnMainThread(title: "Something went wrong", message: error.errorDescription, buttonTitle: "Ok")
             }
@@ -222,7 +227,7 @@ extension FollowerListVC: UICollectionViewDelegate{
 
         if offSetY > contentHeight - height {
             
-            guard hasMorePage else {return}
+            guard hasMorePage, !isLoadingMoreFollowers else {return} // 100den fazla follower ve acaba yükleme yapıyor mu, üstüste yüklemesin
             page += 1
             getFollowers(userName: userName, page: page)
         }
@@ -230,7 +235,6 @@ extension FollowerListVC: UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         // to determine whether the chosen item is in filtered array or original follower array
-        
         let determinedFollowers     = isSearching ? filteredFollowers : followers
         
         let follower                : Follower
