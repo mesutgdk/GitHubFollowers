@@ -230,10 +230,18 @@ extension FollowerListVC: UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         // to determine whether the chosen item is in filtered array or original follower array
+        
         let determinedFollowers     = isSearching ? filteredFollowers : followers
         
-        let follower                = determinedFollowers[indexPath.item]
+        let follower                : Follower
         
+        if !determinedFollowers.isEmpty {follower = determinedFollowers[indexPath.item]}
+        else {follower = followers[indexPath.item]}
+        
+//        let checkedFollowers                    = determinedFollowers.isEmpty ? followers : filteredFollowers
+//        let follower                = determinedFollowers[indexPath.item]
+//        let follower                = checkedFollowers[indexPath.item]
+//        
         let destinationVC           = UserInfoVC()
         
         destinationVC.userName = follower.login
@@ -280,7 +288,8 @@ extension FollowerListVC : FollowerListVCDelegate {
         page            = 1
         followers.removeAll()
         filteredFollowers.removeAll()
-        collectionView.setContentOffset(.zero, animated: true)
+//        collectionView.setContentOffset(.zero, animated: true)
+        collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
         getFollowers(userName: username, page: page)
         
     }
