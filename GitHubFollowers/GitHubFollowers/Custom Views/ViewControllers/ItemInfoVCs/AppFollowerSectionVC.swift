@@ -7,7 +7,13 @@
 
 import UIKit
 
+protocol AppFollowerSectionVCDelegate:AnyObject{
+    func didTapGetFollowers(for user : User)
+}
+
 class AppFollowerSectionVC: AppItemInfoVC{
+    
+    weak var delegate: AppFollowerSectionVCDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()

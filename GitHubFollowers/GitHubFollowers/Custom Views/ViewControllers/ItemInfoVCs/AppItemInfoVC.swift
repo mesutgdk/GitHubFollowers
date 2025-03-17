@@ -7,11 +7,6 @@
 
 import UIKit
 
-protocol AppItemInfoVCDelegate:AnyObject{
-    func didTapGitHubProfile(for user: User)
-    func didTapGetFollowers(for user : User)
-}
-
 class AppItemInfoVC: UIViewController {
 
     let stackView = UIStackView()
@@ -20,9 +15,7 @@ class AppItemInfoVC: UIViewController {
     let actionButton    = CustomButton()
     
     var user : User!
-    
-    weak var delegate : AppItemInfoVCDelegate?
-    
+        
     init(user: User?) {
         super.init(nibName: nil, bundle: nil)
         self.user = user

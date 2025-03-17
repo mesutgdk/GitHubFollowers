@@ -140,8 +140,8 @@ final class UserInfoVC: UIViewController {
         dismiss(animated: true)
     }
 }
-// MARK: - UserInfoVCDelegate
-extension UserInfoVC: AppItemInfoVCDelegate {
+// MARK: - UserInfoVCDelegates - divided two parts
+extension UserInfoVC: AppFollowerSectionVCDelegate {
     func didTapGitHubProfile(for user: User) {
         // to do : show safari view controller
 //        print("my button-Profile is tapped")
@@ -153,6 +153,8 @@ extension UserInfoVC: AppItemInfoVCDelegate {
         
         presentSafariVC(with: url)
     }
+}
+extension UserInfoVC: AppFollowerRepoItemVCDelegate{
     
     func didTapGetFollowers(for user: User) {
         // to do : dismiss this VC

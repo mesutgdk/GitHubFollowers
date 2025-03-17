@@ -7,8 +7,13 @@
 
 import UIKit
 
+protocol AppFollowerRepoItemVCDelegate:AnyObject{
+    func didTapGitHubProfile(for user: User)
+}
+
 class AppFollowerRepoItemVC: AppItemInfoVC{
     
+    weak var delegate: AppFollowerRepoItemVCDelegate?
     override func viewDidLoad() {
         super.viewDidLoad()
         configureItem()
