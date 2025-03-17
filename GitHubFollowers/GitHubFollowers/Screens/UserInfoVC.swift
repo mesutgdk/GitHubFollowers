@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol UserInfoVCDelegate: AnyObject {
+    func didRequestFollowers(for username: String)
+}
+
 final class UserInfoVC: UIViewController {
     
     let headerView  = UIView()
@@ -16,7 +20,7 @@ final class UserInfoVC: UIViewController {
     
     var userName : String?
     
-    weak var delegate: FollowerListVCDelegate?
+    weak var delegate: UserInfoVCDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -38,7 +38,6 @@ class AppItemInfoVC: UIViewController {
         configureActionButton()
         configureStackView()
         layout()
-        
     }
     private func setup(){
         view.layer.cornerRadius = 18
@@ -84,6 +83,8 @@ class AppItemInfoVC: UIViewController {
     private func configureActionButton(){
         actionButton.addTarget(self, action: #selector(actionButtonTapped), for: .touchUpInside)
     }
+    
+    // subclasses will override
     @objc func actionButtonTapped(){
         
     }

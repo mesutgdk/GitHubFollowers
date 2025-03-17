@@ -7,10 +7,6 @@
 
 import UIKit
 
-protocol FollowerListVCDelegate: AnyObject {
-    func didRequestFollowers(for username: String)
-}
-
 final class FollowerListVC: UIViewController {
     
     enum Section {
@@ -283,7 +279,7 @@ extension FollowerListVC: UISearchResultsUpdating, UISearchBarDelegate {
     }
 }
 
-extension FollowerListVC : FollowerListVCDelegate {
+extension FollowerListVC : UserInfoVCDelegate {
     func didRequestFollowers(for username: String) {
         // get followers for that user
         
