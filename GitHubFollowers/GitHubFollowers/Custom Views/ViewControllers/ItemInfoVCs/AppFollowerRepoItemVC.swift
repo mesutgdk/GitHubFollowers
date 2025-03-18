@@ -14,6 +14,7 @@ protocol AppFollowerRepoItemVCDelegate:AnyObject{
 class AppFollowerRepoItemVC: AppItemInfoVC{
     
     weak var delegate: AppFollowerRepoItemVCDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureItem()

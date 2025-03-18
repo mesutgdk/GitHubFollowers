@@ -8,19 +8,14 @@
 import UIKit
 
 final class FavoriteListVC: UIViewController {
-
     
     let tableView               = UITableView()
     var favorites:[Follower]    = []
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         setup()
         layout()
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -73,7 +68,6 @@ final class FavoriteListVC: UIViewController {
             }
         }
     }
-
 }
 extension FavoriteListVC: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
