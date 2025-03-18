@@ -12,6 +12,7 @@ enum PersistenceActionType {
 }
 
 enum PersistenceManager {
+    
     static private let defaults = UserDefaults.standard
     
     enum Keys{
@@ -49,6 +50,7 @@ enum PersistenceManager {
     // MARK: - takeing favorites from defaults
 
     static func retriveFavorites(completed: @escaping (Result<[Follower], AppError>)-> Void){
+        
         guard let favoritesData = defaults.object(forKey: Keys.favorites) as? Data else {
             completed(.success([]))
             return

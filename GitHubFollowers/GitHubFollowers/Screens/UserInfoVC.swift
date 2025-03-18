@@ -13,6 +13,9 @@ protocol UserInfoVCDelegate: AnyObject {
 
 final class UserInfoVC: UIViewController {
     
+    let scrollView  = UIScrollView()
+    let contentView = UIView()
+    
     let headerView  = UIView()
     let itemViewOne = UIView()
     let itemViewTwo = UIView()
@@ -24,6 +27,7 @@ final class UserInfoVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureScrollView()
         setup()
         layout()
         createDoneButton()
@@ -32,8 +36,22 @@ final class UserInfoVC: UIViewController {
     }
     
     
+    private func configureScrollView(){
+        view.addSubview(scrollView)
+        scrollView.addSubview(contentView)
+
+        scrollView.pinToEdge(of: view)
+        contentView.pinToEdge(of: scrollView)
+        
+        NSLayoutConstraint.activate([
+            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+            contentView.heightAnchor.constraint(equalToConstant: 650)
+        ])
+        
+    }
+    
     private func setup(){
-        view.addSubviews(
+        contentView.addSubviews(
             headerView,
             itemViewOne,
             itemViewTwo,
@@ -41,10 +59,10 @@ final class UserInfoVC: UIViewController {
         )
         view.backgroundColor = .systemBackground
         
-        headerView.translatesAutoresizingMaskIntoConstraints    = false
-        itemViewOne.translatesAutoresizingMaskIntoConstraints   = false
-        itemViewTwo.translatesAutoresizingMaskIntoConstraints   = false
-        dateLabel.translatesAutoresizingMaskIntoConstraints    = false
+        headerView.translatesAutoresizingMaskIntoConstraints        = false
+        itemViewOne.translatesAutoresizingMaskIntoConstraints       = false
+        itemViewTwo.translatesAutoresizingMaskIntoConstraints       = false
+        dateLabel.translatesAutoresizingMaskIntoConstraints         = false
         
 //        itemViewOne.backgroundColor = .systemRed
 //        itemViewTwo.backgroundColor = .systemBlue
@@ -56,30 +74,30 @@ final class UserInfoVC: UIViewController {
         let itemHeight: CGFloat = 140
         
         NSLayoutConstraint.activate([
-            headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
-            headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            headerView.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor),
+            headerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
+            headerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding),
             headerView.heightAnchor.constraint(equalToConstant: 210)
         ])
         
         NSLayoutConstraint.activate([
             itemViewOne.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: padding),
-            itemViewOne.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
-            itemViewOne.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            itemViewOne.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
+            itemViewOne.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding),
             itemViewOne.heightAnchor.constraint(equalToConstant: itemHeight)
         ])
         
         NSLayoutConstraint.activate([
             itemViewTwo.topAnchor.constraint(equalTo: itemViewOne.bottomAnchor, constant: padding),
-            itemViewTwo.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
-            itemViewTwo.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            itemViewTwo.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
+            itemViewTwo.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding),
             itemViewTwo.heightAnchor.constraint(equalToConstant: itemHeight)
         ])
         
         NSLayoutConstraint.activate([
             dateLabel.topAnchor.constraint(equalTo: itemViewTwo.bottomAnchor, constant: padding),
-            dateLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
-            dateLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            dateLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
+            dateLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding),
             dateLabel.heightAnchor.constraint(equalToConstant: 50)
 
         ])
@@ -92,7 +110,6 @@ final class UserInfoVC: UIViewController {
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissVC))
         navigationItem.rightBarButtonItem = doneButton
     }
-
     
     private func makeNetworkCall(userName: String?){
         guard let userName = userName else {return}
@@ -111,6 +128,7 @@ final class UserInfoVC: UIViewController {
             }
         }
     }
+
     
     private func configureUIElements( with user: User){
         DispatchQueue.main.async {

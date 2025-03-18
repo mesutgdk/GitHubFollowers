@@ -8,19 +8,21 @@
 import UIKit
 
 final class AppTabBarViewController: UITabBarController{
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpTabs()
     }
+    
     
     private func setUpTabs() {
         tabBar.backgroundColor = .systemBackground
         UITabBar.appearance().tintColor = .systemGreen
         
         setViewControllers([createSearchNavController(),createFavoriteNavController()], animated: true)
-
     }
 
+    
     private func createSearchNavController() -> UINavigationController {
         let searchVC = SearchVC()
 
@@ -34,6 +36,7 @@ final class AppTabBarViewController: UITabBarController{
         return nav1
     }
     
+    
     private func createFavoriteNavController() -> UINavigationController {
         let favoriteVC = FavoriteListVC()
         favoriteVC.title = "Favorite"
@@ -42,7 +45,6 @@ final class AppTabBarViewController: UITabBarController{
         nav2.tabBarItem = UITabBarItem(title: "Favorite",
                                        image: SFSymbols.favoriteBar,
                                        tag: 1)
-        
         return nav2
     }
 }

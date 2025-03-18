@@ -100,7 +100,6 @@ final class NetworkManager{
     }
     
     // MARK: - DownloadManager - download image if it is not cached
-    
     func downloadImage(from urlString: String, completed: @escaping (UIImage?) -> Void){
         let cacheKey = NSString(string: urlString)
         

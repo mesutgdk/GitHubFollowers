@@ -15,6 +15,19 @@ extension UIView{
         })
     }
     
+    func pinToEdge(of superView : UIView){
+        translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            topAnchor.constraint(equalTo: superView.topAnchor),
+            leadingAnchor.constraint(equalTo: superView.leadingAnchor),
+            trailingAnchor.constraint(equalTo: superView.trailingAnchor),
+            bottomAnchor.constraint(equalTo: superView.bottomAnchor)
+        ])
+    }
+    
+    
+    // MARK: - Old property
+
     /* Property */
     @discardableResult
     func translatesAutoresizingMaskIntoContraints(_ translate: Bool) -> Self {

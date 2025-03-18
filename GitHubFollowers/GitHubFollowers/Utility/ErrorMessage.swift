@@ -9,6 +9,7 @@ import Foundation
 
 // used old type of errorHandling during network call
 enum ErrorMessage: String {
+    
     case invalidUsername
     case cantHandleRequest
     case invalidResponce
