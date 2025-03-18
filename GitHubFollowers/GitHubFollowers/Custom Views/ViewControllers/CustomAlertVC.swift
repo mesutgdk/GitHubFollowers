@@ -21,6 +21,7 @@ class CustomAlertVC: UIViewController {
     
     let padding: CGFloat = 20
     
+    
     init(alertTitle: String?    = nil, message: String? = nil, buttonTitle: String? = nil) {
         super.init(nibName: nil, bundle: nil)
         self.alertTitle         = alertTitle
@@ -28,9 +29,11 @@ class CustomAlertVC: UIViewController {
         self.buttonTitle        = buttonTitle
     }
     
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +44,7 @@ class CustomAlertVC: UIViewController {
         configureAlert()
     }
     
+    
     private func setup(){
         view.addSubview(containerView)
         containerView.addSubview(titleLabel)
@@ -48,8 +52,8 @@ class CustomAlertVC: UIViewController {
         containerView.addSubview(actionButton)
         
         view.backgroundColor = UIColor.black.withAlphaComponent(0.75)
-        
     }
+    
     
     private func layout(){
         //containerView
@@ -95,6 +99,7 @@ class CustomAlertVC: UIViewController {
         
     }
     
+    
     private func configureAlert(){
         titleLabel.text = alertTitle ?? "Something went wrong"
         messageLabel.text = message ?? "Unable to complete request"
@@ -106,6 +111,7 @@ class CustomAlertVC: UIViewController {
         }
         actionButton.addAction(action, for: .primaryActionTriggered)
     }
+    
     
     private func dismissAlert(){
         dismiss(animated: true)

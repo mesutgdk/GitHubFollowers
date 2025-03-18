@@ -9,7 +9,6 @@ import UIKit
 
 final class CustomSecondaryTitleLabel: UILabel {
 
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -20,11 +19,13 @@ final class CustomSecondaryTitleLabel: UILabel {
         fatalError("init(coder:) has not been implemented")
     }
     
+    
     init(fontSize: CGFloat) {
         super.init(frame: .zero)
         self.font = UIFont.systemFont(ofSize: fontSize, weight: .medium)
         configure()
     }
+    
     
     private func configure(){
         textColor                   = .secondaryLabel
@@ -33,6 +34,4 @@ final class CustomSecondaryTitleLabel: UILabel {
         lineBreakMode               = .byTruncatingTail
         translatesAutoresizingMaskIntoContraints(false)
     }
-    
-
 }

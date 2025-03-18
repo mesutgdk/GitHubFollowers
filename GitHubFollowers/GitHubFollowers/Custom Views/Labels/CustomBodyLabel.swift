@@ -19,12 +19,14 @@ final class CustomBodyLabel: UILabel {
         fatalError("init(coder:) has not been implemented")
     }
     
+    
     convenience init(textAlignment: NSTextAlignment, numberOfLines: Int) {
         self.init(frame: .zero)
         self.textAlignment = textAlignment
         self.numberOfLines = numberOfLines
         
     }
+    
     
     private func configure(){
         textColor                                   = .secondaryLabel
@@ -35,5 +37,4 @@ final class CustomBodyLabel: UILabel {
         lineBreakMode                               = .byWordWrapping
         translatesAutoresizingMaskIntoContraints(false)
     }
-    
 }

@@ -11,7 +11,6 @@ import SafariServices
 // MARK: - CustomVC not to extend uiviewcontroller, go on this vc by subclass
 
 class CustomDataLoadingVC: UIViewController {
-    
     var containerView : UIView!
     
     func dismissLoadingScreen2(){
