@@ -21,11 +21,22 @@ final class CustomAvatarImageView: UIImageView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    
     private func configure(){
         translatesAutoresizingMaskIntoConstraints    = false
         layer.cornerRadius                           = 10
         clipsToBounds                                = true
         contentMode                                  = .scaleAspectFill
         image                                        = placeHolderImage
+    }
+    
+    
+    func downloadImage(formURL url: String){
+        NetworkManager.shared.downloadImage(from: url) { [weak self] image in
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                self.image = image
+            }
+        }
     }
 }

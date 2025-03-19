@@ -8,10 +8,10 @@
 import UIKit
 
 final class FollowerCell: UICollectionViewCell {
-    static let cellIdentifier = String(describing: FollowerCell.self)
+    static let cellIdentifier   = String(describing: FollowerCell.self)
     
-    let avatarImageView = CustomAvatarImageView(frame: .zero)
-    let usernameLabel = CustomTitleLabel(textAlignment: .center, fontSize: 16)
+    let avatarImageView         = CustomAvatarImageView(frame: .zero)
+    let usernameLabel           = CustomTitleLabel(textAlignment: .center, fontSize: 16)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -29,14 +29,9 @@ final class FollowerCell: UICollectionViewCell {
     }
     
     func configure(follower: Follower){
-        usernameLabel.text = follower.login
         
-        NetworkManager.shared.downloadImage(from: follower.avatarUrl) { [weak self] image in
-            guard let self                  = self else { return }
-            DispatchQueue.main.async {
-                self.avatarImageView.image = image
-            }
-        }
+        avatarImageView.downloadImage(formURL: follower.avatarUrl)
+        usernameLabel.text = follower.login
     }
 
     private func setup(){

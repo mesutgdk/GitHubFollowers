@@ -64,6 +64,7 @@ class AppItemInfoVC: UIViewController {
         
     }
     
+    
     private func configureStackView(){
         stackView.axis = .horizontal
         stackView.distribution = .equalSpacing
@@ -72,6 +73,7 @@ class AppItemInfoVC: UIViewController {
         stackView.addArrangedSubview(itemInfoViewTwo)
 
     }
+    
     
     private func configureActionButton(){
         actionButton.addTarget(self, action: #selector(actionButtonTapped), for: .touchUpInside)

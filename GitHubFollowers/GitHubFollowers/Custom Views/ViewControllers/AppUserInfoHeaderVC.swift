@@ -44,7 +44,7 @@ final class AppUserInfoHeaderVC: UIViewController {
             return
         }
         
-        downloadImage(user: user)
+        avatarImageView.downloadImage(formURL: user.avatarUrl)
         
         usernameLabel.text              = user.login
         nameLabel.text                  = user.name ?? ""
@@ -54,15 +54,7 @@ final class AppUserInfoHeaderVC: UIViewController {
         locationImageView.image         = SFSymbols.location
         locationImageView.tintColor     = .secondaryLabel
     }
-    
-    private func downloadImage(user: User){
-        NetworkManager.shared.downloadImage(from: user.avatarUrl) { [weak self] image in
-            guard let self = self else { return }
-            DispatchQueue.main.async {
-                self.avatarImageView.image = image
-            }
-        }
-    }
+     
     
     private func setup(){
         view.addSubviews(
