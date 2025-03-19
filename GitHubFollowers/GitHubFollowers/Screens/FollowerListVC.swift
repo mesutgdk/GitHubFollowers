@@ -122,20 +122,8 @@ final class FollowerListVC: UIViewController {
             
             switch result {
             case .success(let followers):
-                if followers.count < 100 {self.hasMorePage = false}
                 
-                if followers.isEmpty {
-                    let message = "This User doesn't have any follewers. Let's follow them😇"
-                    DispatchQueue.main.async {
-                        self.showEmptyStateView(with: message, in: self.view)
-                    }
-                    self.isLoadingMoreFollowers = false
-                    return
-                }
-                
-                self.followers.append(contentsOf: followers) // eşitlemektense append etmek yeni sayfalar için must
-                
-                self.updateData(on: self.followers)
+                self.updateUI(with: followers)
                 
             case .failure(let error):
                 self.presentCustomAlertOnMainThread(title: "Bad News⛈️", message: error.errorDescription, buttonTitle: "Ok")
@@ -143,9 +131,35 @@ final class FollowerListVC: UIViewController {
             isLoadingMoreFollowers = false  // no, it is ending-loading
         }
     }
+    
+    private func updateUI(with followers: [Follower]){
+    
+        if followers.count < 100 {self.hasMorePage = false}
+        
+        if followers.isEmpty {
+            let message = "This User doesn't have any follewers. Let's follow them😇"
+            DispatchQueue.main.async {
+                self.showEmptyStateView(with: message, in: self.view)
+            }
+            self.isLoadingMoreFollowers = false
+            return
+        }
+        
+        self.followers.append(contentsOf: followers) // eşitlemektense append etmek yeni sayfalar için must
+        
+        self.updateData(on: self.followers)
+    }
+    
+    
+    private func updateData(on followers : [Follower]){
+        var snapshot = NSDiffableDataSourceSnapshot<Section,Follower>()
+        snapshot.appendSections([.main])
+        snapshot.appendItems(followers)
+        DispatchQueue.main.async {self.dataSource.apply(snapshot, animatingDifferences: true)}
+        
+    }
 
     // MARK: - DataSource
-
     private func configureDataSource(){
         dataSource = UICollectionViewDiffableDataSource<Section,Follower>(collectionView: collectionView, cellProvider: { collectionView, indexPath, follower in
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FollowerCell.cellIdentifier, for: indexPath) as? FollowerCell else {return UICollectionViewCell()}
@@ -155,13 +169,7 @@ final class FollowerListVC: UIViewController {
         })
     }
     
-    private func updateData(on followers : [Follower]){
-        var snapshot = NSDiffableDataSourceSnapshot<Section,Follower>()
-        snapshot.appendSections([.main])
-        snapshot.appendItems(followers)
-        DispatchQueue.main.async {self.dataSource.apply(snapshot, animatingDifferences: true)}
-        
-    }
+
     @objc func addButtonTapped(){
         showLoadingView()
         NetworkManager.shared.getUserInfo(for: userName) { [weak self] result in
@@ -172,25 +180,31 @@ final class FollowerListVC: UIViewController {
             
             switch result {
             case .success(let user):
-                
-                let favoriteUser = Follower(login: user.login, avatarUrl: user.avatarUrl)
-                
-                PersistenceManager.updateWith(favorite: favoriteUser, actionType: .add) { [weak self] error in
-                    guard let self = self else {return}
-                    
-                    guard let error = error else {
-                        presentCustomAlertOnMainThread(title: "Success!", message: "You have successfully added this user🎉", buttonTitle: "Welldone")
-                        
-                        return
-                    }
-                    self.presentCustomAlertOnMainThread(title: "Something went wrong", message: error.errorDescription, buttonTitle: "Ok")
-                    
-                }
+                self.addUserToFavorited(user: user)
+
             case .failure(let error):
                 self.presentCustomAlertOnMainThread(title: "Something went wrong", message: error.errorDescription, buttonTitle: "Ok")
             }
         }
     }
+    
+    private func addUserToFavorited(user: User){
+        let favoriteUser = Follower(login: user.login, avatarUrl: user.avatarUrl)
+        
+        PersistenceManager.updateWith(favorite: favoriteUser, actionType: .add) { [weak self] error in
+            guard let self = self else {return}
+            
+            guard let error = error else {
+                presentCustomAlertOnMainThread(title: "Success!", message: "You have successfully added this user🎉", buttonTitle: "Welldone")
+                
+                return
+            }
+            self.presentCustomAlertOnMainThread(title: "Something went wrong", message: error.errorDescription, buttonTitle: "Ok")
+            
+        }
+    }
+    
+    
     @objc func eyesButtonTapped(){
         showLoadingView()
         NetworkManager.shared.getUserInfo(for: userName) { [weak self] result in
