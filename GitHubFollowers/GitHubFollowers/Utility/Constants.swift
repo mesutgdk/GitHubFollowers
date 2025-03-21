@@ -17,6 +17,9 @@ enum SFSymbols {
     static let profile          = UIImage(systemName: "person.fill")
     static let searchBar        = UIImage(systemName: "magnifyingglass")
     static let favoriteBar      = UIImage(systemName: "star.fill")
+    static let check            = "checkmark.circle"
+    static let searchButton     = "person.2"
+    static let profileButton    = "person"
 }
 
 enum Images{

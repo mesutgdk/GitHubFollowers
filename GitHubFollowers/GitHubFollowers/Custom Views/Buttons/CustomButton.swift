@@ -18,23 +18,32 @@ final class CustomButton: UIButton{
         fatalError("init(coder:) has not been implemented")
     }
     
-    convenience init(backgroundColor: UIColor, title: String) {
+    convenience init(backgroundColor: UIColor, title: String, systemImageName: String) {
         self.init(frame: .zero)
-        self.backgroundColor = backgroundColor
-        self.setTitle(title, for: .normal)
-//        configure()   //    we call self.init, it calls configure, no need to recall
+        set(backgroundColor: backgroundColor, title: title, systemImageName: systemImageName)
+        //        configure()   //    we call self.init, it calls configure, no need to recall
     }
     
     private func configure(){
-        titleLabel?.font        = UIFont.preferredFont(forTextStyle: .headline)
         
-        setTitleColor(.white, for: .normal)
+
+        configuration                = .tinted()
+        configuration?.cornerStyle  = .large
         translatesAutoresizingMaskIntoContraints(false)
-        addCornerRadiusAndShadow(self, cornerRadius: 10, borderWith: 0, borderColor: .black, hasShadow: true)
+        //        titleLabel?.font        = UIFont.preferredFont(forTextStyle: .headline)
+        //        setTitleColor(.white, for: .normal)
+        //        addCornerRadiusAndShadow(self, cornerRadius: 10, borderWith: 0, borderColor: .black, hasShadow: true)
     }
     
-    func set(backgroundColor: UIColor, title: String){
-        self.backgroundColor = backgroundColor
-        setTitle(title, for: .normal)
+    final func set(backgroundColor: UIColor, title: String, systemImageName: String){
+        configuration?.baseBackgroundColor    = backgroundColor
+        configuration?.baseForegroundColor    = backgroundColor
+        
+        configuration?.title            = title
+        configuration?.image            = UIImage(systemName: systemImageName)
+        configuration?.imagePadding     = 6
+        configuration?.imagePlacement   = .leading
+        
+        //        setTitle(title, for: .normal)
     }
 }

@@ -13,7 +13,7 @@ class CustomAlertVC: UIViewController {
     
     private let titleLabel      = CustomTitleLabel(textAlignment: .center, fontSize: 20)
     private let messageLabel    = CustomBodyLabel(textAlignment: .center, numberOfLines: 4)
-    private let actionButton    = CustomButton(backgroundColor: .systemPink, title: "Ok")
+    private let actionButton    = CustomButton(backgroundColor: .systemPink, title: "Ok", systemImageName: SFSymbols.check)
     
     var alertTitle : String?
     var message: String?

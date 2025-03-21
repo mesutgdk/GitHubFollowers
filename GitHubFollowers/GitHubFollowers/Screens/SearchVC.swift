@@ -18,7 +18,7 @@ final class SearchVC: UIViewController {
     
     private let userNameTextField   = CustomTextField()
     
-    private let searchButton  = CustomButton(backgroundColor: .systemGreen, title: "Get Followers")
+    private let searchButton  = CustomButton(backgroundColor: .systemGreen, title: "Get Followers", systemImageName: SFSymbols.searchButton)
     
     private let errorMessageLabel: UILabel = {
         let errorMessageLabel = UILabel()

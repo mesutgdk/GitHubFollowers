@@ -23,7 +23,7 @@ class AppFollowerSectionVC: AppItemInfoVC{
     private func configureItem(){
         itemInfoViewOne.set(ItemInfoType: .followers, withCount: user.followers)
         itemInfoViewTwo.set(ItemInfoType: .following , withCount: user.following)
-        actionButton.set(backgroundColor: .systemGreen, title: "Get Followers")
+        actionButton.set(backgroundColor: .systemGreen, title: "Get Followers", systemImageName: SFSymbols.searchButton)
     }
     
     override func actionButtonTapped() {

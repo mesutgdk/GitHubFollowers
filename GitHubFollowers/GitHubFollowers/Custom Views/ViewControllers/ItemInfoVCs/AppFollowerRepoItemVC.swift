@@ -23,7 +23,7 @@ class AppFollowerRepoItemVC: AppItemInfoVC{
     private func configureItem(){
         itemInfoViewOne.set(ItemInfoType: .repos, withCount: user.publicRepos)
         itemInfoViewTwo.set(ItemInfoType: .gists, withCount: user.publicGists)
-        actionButton.set(backgroundColor: .systemPurple, title: "GitHub Profile")
+        actionButton.set(backgroundColor: .systemPurple, title: "GitHub Profile", systemImageName: SFSymbols.profileButton)
     }
     
     override func actionButtonTapped() {
