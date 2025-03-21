@@ -110,26 +110,27 @@ final class FollowerListVC: UIViewController {
             isLoadingMoreFollowers = false
              return
         }
-        
-        NetworkManager.shared.getFollowers(for: userName, page: page) { [weak self] (result) in
-            guard let self = self else {
-                self?.isLoadingMoreFollowers = false
-                return
-            }
-            
-            //            #warning("Call Dismiss")
-            self.dismissLoadingScreen() // removing activty indicator
-            
-            switch result {
-            case .success(let followers):
-                
-                self.updateUI(with: followers)
-                
-            case .failure(let error):
-                self.presentCustomAlertOnMainThread(title: "Bad News⛈️", message: error.errorDescription, buttonTitle: "Ok")
-            }
-            isLoadingMoreFollowers = false  // no, it is ending-loading
-        }
+        NetworkManager.shared.getFollowers(for: userName, page: page)
+        // the OldWayWithResult of Networkcall
+//        NetworkManager.shared.getFollowersTheOldWayWithResultType(for: userName, page: page) { [weak self] (result) in
+//            guard let self = self else {
+//                self?.isLoadingMoreFollowers = false
+//                return
+//            }
+//            
+//            //            #warning("Call Dismiss")
+//            self.dismissLoadingScreen() // removing activty indicator
+//            
+//            switch result {
+//            case .success(let followers):
+//                
+//                self.updateUI(with: followers)
+//                
+//            case .failure(let error):
+//                self.presentCustomAlertOnMainThread(title: "Bad News⛈️", message: error.errorDescription, buttonTitle: "Ok")
+//            }
+//            isLoadingMoreFollowers = false  // no, it is ending-loading
+//        }
     }
     
     private func updateUI(with followers: [Follower]){

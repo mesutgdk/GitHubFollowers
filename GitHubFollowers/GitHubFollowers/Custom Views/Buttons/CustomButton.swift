@@ -45,5 +45,7 @@ final class CustomButton: UIButton{
         configuration?.imagePlacement   = .leading
         
         //        setTitle(title, for: .normal)
+        //        setImage(UIImage(systemName: systemImageName), for: .normal)
+
     }
 }

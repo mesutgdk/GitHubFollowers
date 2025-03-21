@@ -10,49 +10,38 @@ import UIKit
 final class NetworkManager{
     
     static let shared   = NetworkManager()
-    
     private let baseURL = "https://api.github.com/users/"
-    
     let cache           = NSCache<NSString, UIImage>()
+    let decoder         = JSONDecoder()
     
-    private init() {}
+    private init() {
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        decoder.dateDecodingStrategy        = .iso8601
+    }
     
     // MARK: - network call for followers
-    func getFollowers(for username: String, page: Int, comletion: @escaping (Result<[Follower],AppError>)-> Void){
+    func getFollowers(for username: String, page: Int) async throws -> [Follower] {
         let endpoint = baseURL + "\(username)/followers?per_page=100&page=\(page)" // from developer.github.com
         
         guard let url = endpoint.asUrl else {
-            comletion(.failure(.invalidUsername))
-            return
+            throw AppError.invalidUsername
         }
         
-        let task = URLSession.shared.dataTask(with: url) { data, responce, error in
-            if let _ = error {
-                comletion(.failure(.cantHandleRequest))
-            }
-            
-            guard let responce = responce as? HTTPURLResponse, responce.statusCode == 200 else {
-                comletion(.failure(.invalidResponce))
-                return
-            }
-            
-            guard let data = data else {
-                comletion(.failure(.invalidData))
-                return
-            }
-            do{
-                let decoder = JSONDecoder()
-                decoder.keyDecodingStrategy = .convertFromSnakeCase
-                
-                let followers = try decoder.decode([Follower].self, from: data)
-                
-                comletion(.success(followers)) // işlem başarılı, decode ettiğimizi yukarı atıyoruz
-            } catch{
-                comletion(.failure(.decodingError))
-            }
+        let (data, responce) = try await URLSession.shared.data(from: url)
+        
+        guard let responce = responce as? HTTPURLResponse, responce.statusCode == 200 else {
+            throw AppError.invalidResponce
         }
-        task.resume()
+        
+        do{
+            return try self.decoder.decode([Follower].self, from: data)
+        } catch{
+            throw AppError.invalidData
+        }
     }
+    
+    
+    
     
     // MARK: - network call for the user
     
@@ -85,7 +74,6 @@ final class NetworkManager{
             do{
                 let decoder                         = JSONDecoder()
                 decoder.keyDecodingStrategy         = .convertFromSnakeCase
-                decoder.dateDecodingStrategy        = .iso8601
                 
                 let userInfo                        = try decoder.decode(User.self, from: data)
                 
@@ -117,10 +105,10 @@ final class NetworkManager{
             
             guard let self = self,
                   error == nil,
-            let responce = responce as? HTTPURLResponse,
-            responce.statusCode == 200,
-            let data = data,
-            let image = UIImage(data: data)
+                  let responce = responce as? HTTPURLResponse,
+                  responce.statusCode == 200,
+                  let data = data,
+                  let image = UIImage(data: data)
             else {
                 completed(nil)
                 return
@@ -134,7 +122,6 @@ final class NetworkManager{
     }
     
     // MARK: - last version - async await
-    
     func getUserInfoAsyncAwaitVersion(for username: String) async throws -> User {
         let endpoint = baseURL + "\(username)"
         
@@ -153,16 +140,50 @@ final class NetworkManager{
             }
             
             // Decode the JSON response into the User model
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .convertFromSnakeCase
+            //            let decoder = JSONDecoder()
+            //            decoder.keyDecodingStrategy = .convertFromSnakeCase
             let userInfo = try decoder.decode(User.self, from: data)
             
             return userInfo
         } catch _ as DecodingError {
             throw AppError.decodingError
-        } catch _ {
+        } catch {
             throw AppError.cantHandleRequest
         }
+    }
+    // MARK: - Old networkingway with result type
+    func getFollowersTheOldWayWithResultType(for username: String, page: Int, comletion: @escaping (Result<[Follower],AppError>)-> Void){
+        let endpoint = baseURL + "\(username)/followers?per_page=100&page=\(page)" // from developer.github.com
+        
+        guard let url = endpoint.asUrl else {
+            comletion(.failure(.invalidUsername))
+            return
+        }
+        
+        let task = URLSession.shared.dataTask(with: url) { data, responce, error in
+            if let _ = error {
+                comletion(.failure(.cantHandleRequest))
+            }
+            
+            guard let responce = responce as? HTTPURLResponse, responce.statusCode == 200 else {
+                comletion(.failure(.invalidResponce))
+                return
+            }
+            
+            guard let data = data else {
+                comletion(.failure(.invalidData))
+                return
+            }
+            do{
+                
+                let followers = try self.decoder.decode([Follower].self, from: data)
+                
+                comletion(.success(followers)) // işlem başarılı, decode ettiğimizi yukarı atıyoruz
+            } catch{
+                comletion(.failure(.decodingError))
+            }
+        }
+        task.resume()
     }
     
     // MARK: - Old networkingway without result type
